@@ -1,0 +1,20 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #9dfbf3;
+    background-image: linear-gradient(110deg, #84fff2, #2f7fb2);
+}
+.container{
+    width: 50% !important;
+}
+img, svg {
+    vertical-align: middle;
+    margin: auto;
+}
+.img-fluid {
+    margin: auto;
+}
+.pay-user {
+    background: #00b09b;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #96c93d, #00b09b);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #96c93d, #00b09b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}

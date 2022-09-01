@@ -1,0 +1,12 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #9dfbf3;
+    background-image: linear-gradient(110deg, #84fff2, #2f7fb2);
+}
+.container{
+    width: 65% !important;
+}
+img, svg {
+    vertical-align: middle;
+    margin: auto;
+}

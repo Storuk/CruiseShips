@@ -1,0 +1,168 @@
+[INFO ] 2022-08-30 19:02:03.121 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
+[ERROR] 2022-08-30 19:02:04.361 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Exception during pool initialization.
+java.sql.SQLNonTransientConnectionException: Public Key Retrieval is not allowed
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110) ~[mysql-connector-java-8.0.13.jar:8.0.13]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97) ~[mysql-connector-java-8.0.13.jar:8.0.13]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.13.jar:8.0.13]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:835) ~[mysql-connector-java-8.0.13.jar:8.0.13]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:455) ~[mysql-connector-java-8.0.13.jar:8.0.13]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:240) ~[mysql-connector-java-8.0.13.jar:8.0.13]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:207) ~[mysql-connector-java-8.0.13.jar:8.0.13]
+	at com.mysql.cj.jdbc.MysqlDataSource.getConnection(MysqlDataSource.java:402) ~[mysql-connector-java-8.0.13.jar:8.0.13]
+	at com.mysql.cj.jdbc.MysqlDataSource.getConnection(MysqlDataSource.java:125) ~[mysql-connector-java-8.0.13.jar:8.0.13]
+	at com.mysql.cj.jdbc.MysqlDataSource.getConnection(MysqlDataSource.java:110) ~[mysql-connector-java-8.0.13.jar:8.0.13]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470) [HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) [HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100) [HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:81) [HikariCP-5.0.1.jar:?]
+	at connection.ConnectionManager.<init>(ConnectionManager.java:18) [classes/:?]
+	at connection.ConnectionManager.getInstance(ConnectionManager.java:23) [classes/:?]
+	at Dao.CruiseDao.<clinit>(CruiseDao.java:13) [classes/:?]
+	at org.apache.jsp.index_jsp._jspService(index_jsp.java:136) [final_project2/:?]
+	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70) [jasper.jar:9.0.65]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) [servlet-api.jar:4.0.FR]
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:466) [jasper.jar:9.0.65]
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:379) [jasper.jar:9.0.65]
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:327) [jasper.jar:9.0.65]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) [servlet-api.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) [catalina.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [catalina.jar:9.0.65]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) [tomcat-websocket.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) [catalina.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [catalina.jar:9.0.65]
+	at Sesion_Filter_Listener.Filters.doFilter(Filters.java:42) [classes/:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) [catalina.jar:9.0.65]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) [catalina.jar:9.0.65]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) [catalina.jar:9.0.65]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) [catalina.jar:9.0.65]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [catalina.jar:9.0.65]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) [catalina.jar:9.0.65]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [catalina.jar:9.0.65]
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:687) [catalina.jar:9.0.65]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) [catalina.jar:9.0.65]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) [catalina.jar:9.0.65]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) [tomcat-coyote.jar:9.0.65]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-coyote.jar:9.0.65]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) [tomcat-coyote.jar:9.0.65]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789) [tomcat-coyote.jar:9.0.65]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-coyote.jar:9.0.65]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) [tomcat-util.jar:9.0.65]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) [tomcat-util.jar:9.0.65]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-util.jar:9.0.65]
+	at java.lang.Thread.run(Thread.java:833) [?:?]
+[INFO ] 2022-08-30 19:02:43.836 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-30 19:02:44.042 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@341cd694
+[INFO ] 2022-08-30 19:02:44.045 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-30 19:02:54.121 [http-nio-8083-exec-3] UserLoginServlet - User_Login_successfully
+[INFO ] 2022-08-30 19:03:47.467 [http-nio-8083-exec-3] UserLoginServlet - Admin_Login_successfully
+[INFO ] 2022-08-30 19:06:31.925 [http-nio-8083-exec-9] UserLoginServlet - User_Login_successfully
+[INFO ] 2022-08-30 19:06:50.919 [http-nio-8083-exec-8] UserLoginServlet - Admin_Login_successfully
+[INFO ] 2022-08-30 19:07:11.534 [http-nio-8083-exec-1] UserLoginServlet - Order_accepted
+[INFO ] 2022-08-30 19:15:14.439 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-30 19:15:14.633 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5689889b
+[INFO ] 2022-08-30 19:15:14.636 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-30 19:15:33.736 [http-nio-8083-exec-9] UserLoginServlet - Admin_Login_successfully
+[INFO ] 2022-08-30 19:16:28.339 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-30 19:16:28.577 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5186a440
+[INFO ] 2022-08-30 19:16:28.581 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-30 19:16:35.830 [http-nio-8083-exec-9] UserLoginServlet - Admin_Login_successfully
+[INFO ] 2022-08-30 19:32:21.369 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-30 19:32:21.567 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5186a440
+[INFO ] 2022-08-30 19:32:21.570 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-30 19:32:33.107 [http-nio-8083-exec-8] UserLoginServlet - Admin_Login_successfully
+[INFO ] 2022-08-30 19:34:22.196 [http-nio-8083-exec-8] HikariDataSource - HikariPool-2 - Starting...
+[INFO ] 2022-08-30 19:34:22.351 [http-nio-8083-exec-8] HikariPool - HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@611f9c04
+[INFO ] 2022-08-30 19:34:22.353 [http-nio-8083-exec-8] HikariDataSource - HikariPool-2 - Start completed.
+[INFO ] 2022-08-30 19:34:22.504 [http-nio-8083-exec-8] UserLoginServlet - Admin_Login_successfully
+[INFO ] 2022-08-30 19:34:22.504 [http-nio-8083-exec-10] UserLoginServlet - Admin_Login_successfully
+[INFO ] 2022-08-30 19:37:38.406 [http-nio-8083-exec-2] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-30 19:37:38.635 [http-nio-8083-exec-2] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@765ef586
+[INFO ] 2022-08-30 19:37:38.638 [http-nio-8083-exec-2] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-30 19:38:05.612 [http-nio-8083-exec-3] UserLoginServlet - Admin_Login_successfully
+[INFO ] 2022-08-30 19:40:57.726 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-30 19:40:57.941 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5186a440
+[INFO ] 2022-08-30 19:40:57.944 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-30 19:41:08.754 [http-nio-8083-exec-8] UserLoginServlet - Admin_Login_successfully
+[INFO ] 2022-08-30 20:30:23.520 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-30 20:30:23.714 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5689889b
+[INFO ] 2022-08-30 20:30:23.717 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-30 20:30:35.298 [http-nio-8083-exec-9] UserLoginServlet - Admin_Login_successfully
+[INFO ] 2022-08-30 20:46:45.034 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-30 20:46:45.283 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5186a440
+[INFO ] 2022-08-30 20:46:45.287 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-30 20:57:48.109 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-30 20:57:48.299 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5186a440
+[INFO ] 2022-08-30 20:57:48.303 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-30 20:58:08.845 [http-nio-8083-exec-1] UserLoginServlet - Admin_Login_successfully
+[INFO ] 2022-08-30 21:40:58.628 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-30 21:40:58.841 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6befdf0e
+[INFO ] 2022-08-30 21:40:58.844 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-30 21:41:08.372 [http-nio-8083-exec-8] UserLoginServlet - Admin_Login_successfully
+[INFO ] 2022-08-30 21:42:16.198 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-30 21:42:16.391 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2d2a4c05
+[INFO ] 2022-08-30 21:42:16.394 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-30 21:42:38.193 [http-nio-8083-exec-8] UserLoginServlet - Added_to_cart
+[INFO ] 2022-08-30 21:43:37.322 [http-nio-8083-exec-2] UserLoginServlet - User_Login_successfully
+[INFO ] 2022-08-30 21:46:07.322 [http-nio-8083-exec-7] UserLoginServlet - Balance added
+[INFO ] 2022-08-30 21:46:15.732 [http-nio-8083-exec-3] UserLoginServlet - Cruise_bought
+[INFO ] 2022-08-30 22:38:05.666 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-30 22:38:05.853 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5186a440
+[INFO ] 2022-08-30 22:38:05.856 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-30 22:38:07.940 [http-nio-8083-exec-6] UserLoginServlet - Added_to_cart
+[INFO ] 2022-08-30 22:38:24.460 [http-nio-8083-exec-3] UserLoginServlet - User_Login_successfully
+[INFO ] 2022-08-30 22:43:01.067 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-30 22:43:01.257 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5186a440
+[INFO ] 2022-08-30 22:43:01.260 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-30 22:43:17.136 [http-nio-8083-exec-5] UserLoginServlet - Added_to_cart
+[INFO ] 2022-08-30 22:43:22.660 [http-nio-8083-exec-2] UserLoginServlet - User_Login_successfully
+[INFO ] 2022-08-30 22:43:32.424 [http-nio-8083-exec-2] UserLoginServlet - Balance added
+[INFO ] 2022-08-30 22:43:42.319 [http-nio-8083-exec-7] UserLoginServlet - Cruise_bought
+[INFO ] 2022-08-30 23:05:04.447 [http-nio-8083-exec-2] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-30 23:05:04.642 [http-nio-8083-exec-2] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3a7d444e
+[INFO ] 2022-08-30 23:05:04.645 [http-nio-8083-exec-2] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-30 23:05:18.807 [http-nio-8083-exec-6] UserLoginServlet - User_Login_successfully
+[INFO ] 2022-08-30 23:13:01.956 [http-nio-8083-exec-2] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-30 23:13:02.147 [http-nio-8083-exec-2] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@313b5e
+[INFO ] 2022-08-30 23:13:02.149 [http-nio-8083-exec-2] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-30 23:13:09.351 [http-nio-8083-exec-8] UserLoginServlet - User_Login_successfully
+[INFO ] 2022-08-30 23:17:05.644 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-30 23:17:05.828 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6b299116
+[INFO ] 2022-08-30 23:17:05.831 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-30 23:17:24.717 [http-nio-8083-exec-9] UserLoginServlet - User_Login_successfully
+[INFO ] 2022-08-30 23:17:27.967 [http-nio-8083-exec-2] UserLoginServlet - Added_to_cart
+[INFO ] 2022-08-30 23:17:36.569 [http-nio-8083-exec-8] UserLoginServlet - Cruise_bought
+[INFO ] 2022-08-30 23:18:38.939 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-30 23:18:39.136 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6b299116
+[INFO ] 2022-08-30 23:18:39.138 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-30 23:18:52.682 [http-nio-8083-exec-4] UserLoginServlet - Added_to_cart
+[INFO ] 2022-08-30 23:18:59.729 [http-nio-8083-exec-1] UserLoginServlet - User_Login_successfully
+[INFO ] 2022-08-30 23:19:06.510 [http-nio-8083-exec-6] UserLoginServlet - Balance added
+[INFO ] 2022-08-30 23:19:19.267 [http-nio-8083-exec-5] UserLoginServlet - Cruise_bought
+[INFO ] 2022-08-30 23:24:27.759 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-30 23:24:27.958 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6763e25f
+[INFO ] 2022-08-30 23:24:27.961 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-30 23:24:29.420 [http-nio-8083-exec-4] UserLoginServlet - Added_to_cart
+[INFO ] 2022-08-30 23:24:37.004 [http-nio-8083-exec-1] UserLoginServlet - User_Login_successfully
+[INFO ] 2022-08-30 23:24:47.665 [http-nio-8083-exec-7] UserLoginServlet - Cruise_bought
+[INFO ] 2022-08-30 23:25:24.420 [http-nio-8083-exec-6] UserLoginServlet - Admin_Login_successfully
+[INFO ] 2022-08-30 23:35:22.071 [http-nio-8083-exec-3] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-30 23:35:22.265 [http-nio-8083-exec-3] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@638130f6
+[INFO ] 2022-08-30 23:35:22.267 [http-nio-8083-exec-3] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-30 23:36:09.751 [http-nio-8083-exec-6] UserLoginServlet - User_Login_successfully
+[INFO ] 2022-08-30 23:36:23.996 [http-nio-8083-exec-7] UserLoginServlet - Added_to_cart
+[INFO ] 2022-08-30 23:36:38.335 [http-nio-8083-exec-4] UserLoginServlet - Cruise_bought
+[INFO ] 2022-08-30 23:37:26.205 [http-nio-8083-exec-8] UserLoginServlet - Cruise_removed_from_cart
+[INFO ] 2022-08-30 23:38:05.005 [http-nio-8083-exec-5] UserLoginServlet - Admin_Login_successfully
+[INFO ] 2022-08-30 23:40:45.962 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-30 23:40:46.179 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2d1c96ec
+[INFO ] 2022-08-30 23:40:46.181 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-30 23:43:57.918 [http-nio-8083-exec-7] UserLoginServlet - User_Login_successfully
+[INFO ] 2022-08-30 23:45:29.054 [http-nio-8083-exec-10] UserLoginServlet - Added_to_cart
+[INFO ] 2022-08-30 23:45:51.902 [http-nio-8083-exec-2] UserLoginServlet - Admin_Login_successfully
+[INFO ] 2022-08-30 23:54:31.466 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-08-30 23:54:31.664 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@25b146d1
+[INFO ] 2022-08-30 23:54:31.667 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-08-30 23:54:58.602 [http-nio-8083-exec-2] UserLoginServlet - User_Registered_successfully
+[INFO ] 2022-08-30 23:55:19.901 [http-nio-8083-exec-8] UserLoginServlet - User_Login_successfully

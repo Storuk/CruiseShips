@@ -1,0 +1,49 @@
+body, .profile-cont {
+    background-color: #9dfbf3;
+    background-image: linear-gradient(110deg, #84fff2, #2f7fb2);
+}
+li.nav-item {
+    padding: 0 1rem;
+}
+li.nav-item-sing {
+    padding-right: 1rem;
+}
+
+.navbar-brand {
+    font-size: 2rem;
+    padding: 1rem 0;
+}
+p, ol, ul, a {
+    font-family: 'Mulish', sans-serif;
+    font-size: 2.5vmin;
+}
+.btn {
+    font-size: 2.5vmin;
+}
+.fa-ship:before {
+    margin-right: .5rem;
+}
+.container{
+    margin-bottom: 2rem;
+}
+.card-header{
+    font-family: 'Mulish', sans-serif;
+    font-size: 2vmin;
+}
+
+.gradient-custom {
+    /* fallback for old browsers */
+    background: #f6d365;
+
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
+}
+
+.pay-user {
+    background: #00b09b;
+    background: -webkit-linear-gradient(to right, #96c93d, #00b09b);
+    background: linear-gradient(to right, #96c93d, #00b09b);
+}

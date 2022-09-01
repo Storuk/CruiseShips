@@ -1,0 +1,59 @@
+.flex-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 40px 20px 60px;
+}
+
+.flex-column {
+    display: flex;
+    padding: 0 20px;
+    flex: 1 1 50%;
+    flex-direction: column;
+    height: 200px;
+    justify-content: space-between;
+}
+
+input {
+    padding: 5px;
+    border-radius: 20px;
+    border-color: cadetblue;
+}
+.date-picker div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+}
+form button {
+    width: 150px;
+    margin: 0 auto;
+    line-height: 30px;
+    border-radius: 20px;
+    background-color: #448b85;
+    position: absolute;
+    right:0 ;
+    left: 0;
+    bottom: 10px;
+}
+.mt-4 {
+    margin-top: 2rem!important;
+}
+.mb-5 {
+    margin-bottom: 0 !important;
+}
+
+@media( max-width:768px) {
+    .flex-row {
+    display: block;
+    padding: 40px 20px 70px;
+}
+    .flex-column {
+    display: flex;
+    padding: 20px;
+    flex: 1 1 50%;
+    flex-direction: column;
+    height: 200px;
+    justify-content: space-between;
+}
+}

@@ -7,6 +7,7 @@
         <error-code>404</error-code>
         <location>/eror404.html</location>
     </error-page>
+
     <listener>
         <listener-class>Sesion_Filter_Listener.Listener</listener-class>
     </listener>

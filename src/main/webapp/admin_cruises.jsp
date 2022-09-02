@@ -8,6 +8,11 @@
     CruiseDao cr = new CruiseDao();
     List<Cruise> cruises = cr.getAllCruises();
 
+    if(session.getAttribute("filtered_cruises") != null){
+        cruises = (List<Cruise>) session.getAttribute("filtered_cruises");
+        session.removeAttribute("filtered_cruises");
+    }
+
     ArrayList<Cart> cart_list = (ArrayList<Cart>) session.getAttribute("cart-list");
     if (cart_list != null) {
         request.setAttribute("cart_list", cart_list);
@@ -74,6 +79,35 @@
 </nav>
 <div class="container bg-dark my-3" style="border: 2px solid #ffffff; border-radius: 20px;">
     <div class="card-header my-lg-3" style=" background-color: #151618;text-align: center; color: #fff; font-family: 'Mulish', sans-serif; font-size: 2vmin;"> <fmt:message key="lable.allcruises"/></div>
+    <form action="<%= request.getContextPath() %>/CruisesFilterServlet" method="post" class="mx-1 mx-md-4">
+        <div class="d-flex flex-row align-items-center mb-4">
+            <div class="form-outline flex-fill mb-0">
+                <label class="form-label"  for="form3Example1c" style="color: white"><fmt:message key="lable.cruise_date"/></label>
+                <input type="date" name = "date" id="form3Example1c" class="form-control" />
+            </div>
+        </div>
+        <div class="d-flex flex-row align-items-center mb-4">
+            <div class="form-outline flex-fill mb-0">
+                <label class="form-label"  for="form3Example2c" style="color: white"><fmt:message key="lable.price_from"/></label>
+                <input type="number" min="<%=CruiseDao.minPrice()%>" max="<%=CruiseDao.maxPrice()%>" name = "min_price" placeholder="<fmt:message key="lable.price_from"/>" id="form3Example2c" class="form-control" />
+            </div>
+        </div>
+        <div class="d-flex flex-row align-items-center mb-4">
+            <div class="form-outline flex-fill mb-0">
+                <label class="form-label"  for="form3Example3c" style="color: white"><fmt:message key="lable.price_to"/></label>
+                <input type="number" min="<%=CruiseDao.minPrice()%>" max="<%=CruiseDao.maxPrice()%>" name = "max_price" placeholder="<fmt:message key="lable.price_to"/>" id="form3Example3c" class="form-control" />
+            </div>
+        </div>
+        <div class="d-flex flex-row align-items-center mb-4">
+            <div class="form-outline flex-fill mb-0">
+                <label class="form-label"  for="form3Example5c" style="color: white"><fmt:message key="lable.duration"/></label>
+                <input type="number" name = "duration" placeholder="<fmt:message key="lable.duration"/>" id="form3Example5c" class="form-control" />
+            </div>
+        </div>
+        <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+            <button type="submit" value="Submit" class="btn btn-primary btn-lg"><fmt:message key="lable.usefilter"/></button>
+        </div>
+    </form>
     <div class="row">
         <%
             if (!cruises.isEmpty()){

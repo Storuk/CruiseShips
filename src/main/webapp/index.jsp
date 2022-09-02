@@ -7,8 +7,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page isELIgnored="false"%>
 
-<%  CruiseDao cr = new CruiseDao();
+<%
+    CruiseDao cr = new CruiseDao();
     List<Cruise> cruises = cr.getAllCruises();
+
+    if(session.getAttribute("filtered_cruises") != null){
+        cruises = (List<Cruise>) session.getAttribute("filtered_cruises");
+        session.removeAttribute("filtered_cruises");
+    }
 
     ArrayList<Cart> cart_list = (ArrayList<Cart>) session.getAttribute("cart-list");
     if (cart_list != null) {
@@ -35,6 +41,12 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand"><i class="fa fa-ship" aria-hidden="true"></i><fmt:message key="lable.header"/></a>
+        <ul class="navbar-nav  mb-lg-0">
+            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="?language=uk"><fmt:setLocale value="uk"/><img style="width: 40px;" src="images/UA.png"></a></li>
+        </ul>
+        <ul class="navbar-nav  mb-lg-0">
+            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="?language=en"><fmt:setLocale value="en"/><img style="width: 40px;" src="images/EN.png"></a></li>
+        </ul>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon">
 
@@ -45,13 +57,6 @@
                 <li class="nav-item">
 
                 </li>
-            </ul>
-
-            <ul class="navbar-nav  mb-lg-0">
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="?language=uk"><fmt:setLocale value="uk"/>UK</a></li>
-            </ul>
-            <ul class="navbar-nav  mb-lg-0">
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="?language=en"><fmt:setLocale value="en"/>EN</a></li>
             </ul>
 
             <ul class="navbar-nav  mb-lg-0">
@@ -116,17 +121,28 @@
 <div class="container bg-dark my-3" style="border: 2px solid #ffffff; border-radius: 20px;">
     <div class="card-header my-lg-3" style=" text-align: center; color: #fff; font-family: 'Mulish', sans-serif; font-size: 2vmin; background-color: #212529;"><fmt:message key="lable.allcruises"/></div>
     <form action="<%= request.getContextPath() %>/CruisesFilterServlet" method="post" class="mx-1 mx-md-4">
-
         <div class="d-flex flex-row align-items-center mb-4">
             <div class="form-outline flex-fill mb-0">
-                <input type="text" name = "date" placeholder="2022-09-11" id="form3Example1c" class="form-control" />
-                <label class="form-label"  for="form3Example1c"></label>
+                <label class="form-label"  for="form3Example1c" style="color: white"><fmt:message key="lable.cruise_date"/></label>
+                <input type="date" name = "date" id="form3Example1c" class="form-control" />
             </div>
         </div>
         <div class="d-flex flex-row align-items-center mb-4">
             <div class="form-outline flex-fill mb-0">
-                <input type="password" name = "duration" placeholder="<fmt:message key="lable.duration"/>" id="form3Example5c" class="form-control" />
-                <label class="form-label"  for="form3Example1c"></label>
+                <label class="form-label"  for="form3Example2c" style="color: white"><fmt:message key="lable.price_from"/></label>
+                <input type="number" min="<%=CruiseDao.minPrice()%>" max="<%=CruiseDao.maxPrice()%>" name = "min_price" placeholder="<fmt:message key="lable.price_from"/>" id="form3Example2c" class="form-control" />
+            </div>
+        </div>
+        <div class="d-flex flex-row align-items-center mb-4">
+            <div class="form-outline flex-fill mb-0">
+                <label class="form-label"  for="form3Example3c" style="color: white"><fmt:message key="lable.price_to"/></label>
+                <input type="number" min="<%=CruiseDao.minPrice()%>" max="<%=CruiseDao.maxPrice()%>" name = "max_price" placeholder="<fmt:message key="lable.price_to"/>" id="form3Example3c" class="form-control" />
+            </div>
+        </div>
+        <div class="d-flex flex-row align-items-center mb-4">
+            <div class="form-outline flex-fill mb-0">
+                <label class="form-label"  for="form3Example5c" style="color: white"><fmt:message key="lable.duration"/></label>
+                <input type="number" name = "duration" placeholder="<fmt:message key="lable.duration"/>" id="form3Example5c" class="form-control" />
             </div>
         </div>
         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">

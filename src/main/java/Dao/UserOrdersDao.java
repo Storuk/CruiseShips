@@ -98,8 +98,8 @@ public class UserOrdersDao {
     public List<UserOrders> userOrdersForAdmin() {
         List<UserOrders> list = new ArrayList<>();
         try(Connection con = cm.getConnection();
-            PreparedStatement pst = con.prepareStatement("select * from orders order by orders.statusId")) {
-            ResultSet rs = pst.executeQuery();
+            PreparedStatement pst = con.prepareStatement("select * from orders order by orders.statusId");
+            ResultSet rs = pst.executeQuery()) {
             while (rs.next()) {
                 UserOrders order = new UserOrders();
                 order.setOrderId(rs.getInt("order_id"));
@@ -165,4 +165,6 @@ public class UserOrdersDao {
             e.printStackTrace();
         }
     }
+
+
 }

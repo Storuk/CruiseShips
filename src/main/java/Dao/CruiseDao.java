@@ -5,6 +5,7 @@ import Entities.Ships;
 import Enums.CruiseStatusEnum;
 import connection.ConnectionManager;
 
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,11 +27,15 @@ public class CruiseDao {
         return cruises;
     }
 
-    public List<Cruise> getCruisesByFilters(){
+    public List<Cruise> getCruisesByFilters(double min_price, double max_price, Date date, int duration){
         List<Cruise> cruises = new ArrayList<Cruise>();
 
         try(Connection con = cm.getConnection();
-            PreparedStatement pst = con.prepareStatement("select * from cruise where start_cruise = ? and duration ?")) {
+            PreparedStatement pst = con.prepareStatement("select * from cruise WHERE price BETWEEN ? AND ? AND start_cruise >= ? AND duration >= ?")) {
+            pst.setDouble(1,min_price);
+            pst.setDouble(2,max_price);
+            pst.setDate(3,date);
+            pst.setInt(4,duration);
             SelectCruise(cruises, pst);
         }
         catch (Exception e){
@@ -116,12 +121,13 @@ public class CruiseDao {
             pst.setDate(3, start_date_cruise);
             pst.setDate(4, end_date_cruise);
             pst.setInt(5, ship_id);
-            ResultSet rs = pst.executeQuery();
-            if(rs.next()) {
-                cruise = new Cruise();
-                cruise.setShip_name("ship_name");
-                cruise.setStart_cruise_date(rs.getDate("start_cruise"));
-                cruise.setEnd_cruise_date(rs.getDate("end_cruise"));
+            try(ResultSet rs = pst.executeQuery()) {
+                if (rs.next()) {
+                    cruise = new Cruise();
+                    cruise.setShip_name("ship_name");
+                    cruise.setStart_cruise_date(rs.getDate("start_cruise"));
+                    cruise.setEnd_cruise_date(rs.getDate("end_cruise"));
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -191,7 +197,6 @@ public class CruiseDao {
     public static void deleteCruise(int id){
         try(Connection connection = cm.getConnection();
             PreparedStatement pst = connection.prepareStatement("delete from cruise where id=?")){
-
             pst.setInt(1,id);
             pst.execute();
 
@@ -225,4 +230,41 @@ public class CruiseDao {
         return row;
     }
 
+    public static double maxPrice() {
+        double max = 0.;
+        try(Connection con = cm.getConnection();
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT price FROM cruise")){
+            if(rs.next()){
+                max = rs.getDouble(1);
+            }
+            while(rs.next()){
+                if(max < rs.getDouble(1)){
+                    max = rs.getDouble(1);
+                }
+            }
+            return max;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static double minPrice() {
+        double min = 0.;
+        try(Connection con = cm.getConnection();
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT price FROM cruise")){
+            if(rs.next()){
+                min = rs.getDouble(1);
+            }
+            while(rs.next()){
+                if(min > rs.getDouble(1)){
+                    min = rs.getDouble(1);
+                }
+            }
+            return min;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

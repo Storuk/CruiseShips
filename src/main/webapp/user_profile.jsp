@@ -95,7 +95,7 @@
                             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
                                  alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
                             <h4><%=user.getUsername()%></h4>
-                            <h5> <fmt:message key="lable.balance"/>: <%=user.getScore()%> </h5>
+                            <h5> <fmt:message key="lable.balance"/>: <%=user.getScore()%> $</h5>
                             <!--<button style = "margin-top: 1rem; margin-bottom: 1rem;" href="AddBalance" class="btn btn-success">Add balance</button>-->
                             <a href="AddBalance" class="btn btn-primary" style="margin-bottom: 1rem; background-color: #448b85; border-color: #448b85;"> <fmt:message key="lable.addbalance"/></a>
                         </div>

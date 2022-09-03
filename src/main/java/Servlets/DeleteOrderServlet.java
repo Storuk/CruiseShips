@@ -12,6 +12,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
 import java.sql.SQLException;
 
 @WebServlet(name = "DeleteOrderServlet", value = "/DeleteOrder")
@@ -32,7 +33,7 @@ public class DeleteOrderServlet extends HttpServlet {
                 UserOrdersDao orderDao = new UserOrdersDao();
                 orderDao.deleteOrder(Integer.parseInt(id));
                 CruiseDao.UpdatePlusCruisePlaces(cruiseId, quantity);
-                UserDao.AddMoney(Integer.parseInt(userId), Double.parseDouble(money));
+                UserDao.AddMoney(Integer.parseInt(userId), new BigDecimal(money));
                 User update = UserDao.validate(username, password);
                 request.getSession().setAttribute("user", update);
                 logger.info("Order Deleted");

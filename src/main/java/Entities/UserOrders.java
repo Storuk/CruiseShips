@@ -2,6 +2,7 @@ package Entities;
 
 import Enums.CruiseStatusEnum;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class UserOrders extends Cruise{
@@ -10,10 +11,10 @@ public class UserOrders extends Cruise{
     private int quantity;
     private CruiseStatusEnum statusId;
     private String date;
-    private double paymentAmount;
+    private BigDecimal paymentAmount;
     private String images;
 
-    public UserOrders(int orderId, int u_id, int quantity, CruiseStatusEnum statusId, String date, double paymentAmount, String images) {
+    public UserOrders(int orderId, int u_id, int quantity, CruiseStatusEnum statusId, String date, BigDecimal paymentAmount, String images) {
         this.orderId = orderId;
         this.u_id = u_id;
         this.quantity = quantity;
@@ -23,7 +24,7 @@ public class UserOrders extends Cruise{
         this.images = images;
     }
 
-    public UserOrders(int u_id, int quantity, CruiseStatusEnum statusId, String date, double paymentAmount, String images) {
+    public UserOrders(int u_id, int quantity, CruiseStatusEnum statusId, String date, BigDecimal paymentAmount, String images) {
         this.u_id = u_id;
         this.quantity = quantity;
         this.statusId = statusId;
@@ -76,11 +77,11 @@ public class UserOrders extends Cruise{
         this.date = date;
     }
 
-    public double getPaymentAmount() {
+    public BigDecimal getPaymentAmount() {
         return paymentAmount;
     }
 
-    public void setPaymentAmount(double paymentAmount) {
+    public void setPaymentAmount(BigDecimal paymentAmount) {
         this.paymentAmount = paymentAmount;
     }
 

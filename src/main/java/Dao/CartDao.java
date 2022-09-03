@@ -3,6 +3,7 @@ package Dao;
 import Entities.Cart;
 import connection.ConnectionManager;
 
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,7 @@ public class CartDao {
                                 row.setId(rs.getInt("id"));
                                 row.setCruise_name(rs.getString("cruise_name"));
                                 row.setStart_cruise_date(rs.getDate("start_cruise"));
-                                row.setPrice(rs.getDouble("price") * item.getQuantity());
+                                row.setPrice(rs.getBigDecimal("price").multiply(BigDecimal.valueOf(item.getQuantity())));
                                 row.setPlaces(rs.getInt("places"));
                                 row.setQuantity(item.getQuantity());
                                 cruises.add(row);
@@ -43,8 +44,8 @@ public class CartDao {
         return cruises;
     }
 
-    public double getTotalCartPrice(ArrayList<Cart> cartList) {
-        double sum = 0;
+    public BigDecimal getTotalCartPrice(ArrayList<Cart> cartList) {
+        BigDecimal sum = new BigDecimal(0);
         try {
             if (cartList.size() > 0) {
                 for (Cart item : cartList) {
@@ -53,7 +54,7 @@ public class CartDao {
                         pst.setInt(1, item.getId());
                         try(ResultSet rs = pst.executeQuery()){
                             while (rs.next()) {
-                                sum += rs.getDouble("price") * item.getQuantity();
+                                sum = sum.add((rs.getBigDecimal("price").multiply(BigDecimal.valueOf(item.getQuantity()))));
                             }
                         }
                     }

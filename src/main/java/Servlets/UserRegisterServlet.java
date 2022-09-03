@@ -10,6 +10,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.math.BigDecimal;
 
 
 import static Dao.UserDao.check;
@@ -32,9 +33,8 @@ public class UserRegisterServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String re_password = request.getParameter("re_password");
-        String score = "0";
         UserRoleEnum role = UserRoleEnum.ADMIN;
-        double quantity = Double.parseDouble(score);
+        BigDecimal quantity = new BigDecimal(0);
 
         User user = new User();
         user.setUsername(username);

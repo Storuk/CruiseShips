@@ -41,7 +41,7 @@
                                     <div class="d-flex flex-row align-items-center justify-content-center mb-4">
                                         <div class="form-outline flex-fill mb-0">
                                             <label class="form-label"  for="form3Example1c"><fmt:message key="lable.payment_amount"/></label>
-                                            <input type="text" name = "sum" required = "required" value = "<%=session.getAttribute("Cruise_price")%>" placeholder="Enter the sum" id="form3Example1c" class="form-control" readonly="readonly" />
+                                            <input type="number" name = "sum" required = "required" value = "<%=session.getAttribute("Cruise_price")%>" placeholder="Enter the sum" id="form3Example1c" class="form-control" readonly="readonly" />
                                         </div>
                                     </div>
                                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">

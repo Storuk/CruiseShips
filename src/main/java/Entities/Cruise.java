@@ -3,11 +3,12 @@ package Entities;
 import Enums.CruiseStatusEnum;
 import Enums.UserRoleEnum;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 
 public class Cruise extends Ships {
     private int id;
-    private double price;
+    private BigDecimal price;
     private Date start_cruise_date;
     private Date end_cruise_date;
     private String cruise_name;
@@ -48,11 +49,11 @@ public class Cruise extends Ships {
     }
 
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

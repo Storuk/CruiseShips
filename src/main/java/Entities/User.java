@@ -2,6 +2,9 @@ package Entities;
 
 import Enums.UserRoleEnum;
 
+import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+
 public class User {
     private int Id;
     private String username;
@@ -9,7 +12,7 @@ public class User {
     private String lastName;
     private String email;
     private String password;
-    private double score;
+    private BigDecimal score;
     private UserRoleEnum role;
 
     public UserRoleEnum getRole() {
@@ -60,11 +63,11 @@ public class User {
         this.password = password;
     }
 
-    public double getScore() {
+    public BigDecimal getScore() {
         return score;
     }
 
-    public void setScore(double score) {
+    public void setScore(BigDecimal score) {
         this.score = score;
     }
 

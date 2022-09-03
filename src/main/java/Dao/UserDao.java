@@ -4,6 +4,7 @@ import Entities.User;
 import connection.ConnectionManager;
 
 
+import java.math.BigDecimal;
 import java.sql.*;
 
 public class UserDao {
@@ -26,7 +27,7 @@ public class UserDao {
                 user.setLastName(rs.getString("ulastname"));
                 user.setEmail(rs.getString("uemail"));
                 user.setPassword(rs.getString("upassword"));
-                user.setScore(rs.getDouble("uscore"));
+                user.setScore(rs.getBigDecimal("uscore"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -37,9 +38,6 @@ public class UserDao {
     public static String authenticateUser(User user) throws ClassNotFoundException {
         String userName = user.getUsername();
         String password = user.getPassword();
-        //Connection con = null;
-        //Statement statement = null;
-        //ResultSet resultSet = null;
         String userNameDB = "";
         String passwordDB = "";
         String roleDB = "";
@@ -75,7 +73,7 @@ public class UserDao {
             preparedStatement.setString(3,user.getLastName());
             preparedStatement.setString(4,user.getEmail());
             preparedStatement.setString(5,user.getPassword());
-            preparedStatement.setDouble(6,user.getScore());
+            preparedStatement.setBigDecimal(6,user.getScore());
             preparedStatement.setInt(7,user.getRole().ordinal());
             System.out.println(preparedStatement);
             result = preparedStatement.executeUpdate();
@@ -86,11 +84,12 @@ public class UserDao {
         return result;
     }
 
-    public static int AddMoney(int id, double new_balance) throws ClassNotFoundException, SQLException {
+    public static int AddMoney(int id, BigDecimal new_balance) throws ClassNotFoundException, SQLException {
         int i = 0;
+        System.out.println(new_balance);
         try(Connection con = cm.getConnection();
             PreparedStatement pst = con.prepareStatement("UPDATE users SET uscore = uscore + ? where id = ?")){
-            pst.setDouble(1, new_balance);
+            pst.setBigDecimal(1, new_balance);
             pst.setInt(2, id);
             i = pst.executeUpdate();
         } catch (Exception e) {

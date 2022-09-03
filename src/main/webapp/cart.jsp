@@ -2,6 +2,7 @@
 <%@page import="java.util.*"%>
 <%@ page import="Dao.CartDao" %>
 <%@ page import="java.text.DecimalFormat" %>
+<%@ page import="java.math.BigDecimal" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
   DecimalFormat dcf = new DecimalFormat("#.##");
@@ -11,7 +12,7 @@
   List<Cart> cartProduct = null;
   if (cart_list != null) {
     CartDao pDao = new CartDao();
-    double total = pDao.getTotalCartPrice(cart_list);
+    BigDecimal total = pDao.getTotalCartPrice(cart_list);
     cartProduct = pDao.getCartProducts(cart_list);
     request.setAttribute("total", total);
     request.setAttribute("cart_list", cart_list);
@@ -144,7 +145,7 @@
             <a class="btn btn-sm btn-decre text-success" href="QuantityIncDecServlet?action=dec&id=<%=c.getId()%>&places=<%=c.getPlaces()%>"><i class="fas fa-minus-square"></i></a>
             <button type="submit" name="places" value="<%=c.getPlaces()%>" class="btn btn-primary btn-sm"><fmt:message key="lable.buynow"/></button>
             <div class="ghost" style=" display: none;">
-              <input type="text" name="Cruise_price" class="form-control"  value="<%= dcf.format(c.getPrice())%>" readonly>
+              <input type="text" name="Cruise_price" class="form-control"  value="<%= c.getPrice()%>" readonly>
               <input type="text" name="cruiseName" class="form-control"  value="<%=c.getCruise_name()%>" readonly>
             </div>
           </div>

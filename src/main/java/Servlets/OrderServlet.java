@@ -13,6 +13,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -55,6 +56,7 @@ public class OrderServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
         User user = (User) request.getSession().getAttribute("user");
         try (PrintWriter out = response.getWriter()) {
 
@@ -62,9 +64,11 @@ public class OrderServlet extends HttpServlet {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
                 dispatcher.forward(request, response);
             }
-
-            double balance = user.getScore();
-            double sum = Double.parseDouble(request.getParameter("sum"));
+            if (session.getAttribute("Cruise_price") == null){
+                response.sendRedirect("orders.jsp");
+            }
+            BigDecimal balance = user.getScore();
+            BigDecimal sum = new BigDecimal(request.getParameter("sum"));
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             Date date = new Date();
 
@@ -86,7 +90,7 @@ public class OrderServlet extends HttpServlet {
             }
 
             if(Objects.equals(fileName, ".jpg") || Objects.equals(fileName, ".png") || Objects.equals(fileName, ".svg")) {
-                if (sum < balance) {
+                if (sum.compareTo(balance) <= 0) {
                     FileOutputStream fos = new FileOutputStream("C:\\Users\\Влад\\IdeaProjects\\final_project2\\src\\main\\webapp\\documents_images\\" + full_filename);
                     InputStream is = file.getInputStream();
                     byte[] data = new byte[is.available()];
@@ -126,7 +130,7 @@ public class OrderServlet extends HttpServlet {
                             }
                         }
                         logger.info("Cruise_bought");
-
+                        session.removeAttribute("Cruise_price");
                         response.sendRedirect("orders.jsp");
                     } else {
                         out.println("order failed");

@@ -11,6 +11,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
 import java.sql.SQLException;
 
 @WebServlet(name = "CancelOrderServlet", value = "/CancelOrder")
@@ -32,7 +33,7 @@ public class CancelOrderServlet extends HttpServlet {
                 UserOrdersDao orderDao = new UserOrdersDao();
                 orderDao.CancelOrder(Integer.parseInt(id));
                 CruiseDao.UpdatePlusCruisePlaces(cruiseId, quantity);
-                UserDao.AddMoney(Integer.parseInt(userId), Double.parseDouble(money));
+                UserDao.AddMoney(Integer.parseInt(userId), new BigDecimal(money));
             }
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/requests.jsp");
             requestDispatcher.forward(request,response);

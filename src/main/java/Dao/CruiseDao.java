@@ -7,6 +7,7 @@ import connection.ConnectionManager;
 
 import java.math.BigDecimal;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,13 +28,13 @@ public class CruiseDao {
         return cruises;
     }
 
-    public List<Cruise> getCruisesByFilters(double min_price, double max_price, Date date, int duration){
+    public List<Cruise> getCruisesByFilters(BigDecimal min_price, BigDecimal max_price, Date date, int duration){
         List<Cruise> cruises = new ArrayList<Cruise>();
 
         try(Connection con = cm.getConnection();
             PreparedStatement pst = con.prepareStatement("select * from cruise WHERE price BETWEEN ? AND ? AND start_cruise >= ? AND duration >= ?")) {
-            pst.setDouble(1,min_price);
-            pst.setDouble(2,max_price);
+            pst.setBigDecimal(1,min_price);
+            pst.setBigDecimal(2,max_price);
             pst.setDate(3,date);
             pst.setInt(4,duration);
             SelectCruise(cruises, pst);
@@ -53,7 +54,7 @@ public class CruiseDao {
             Ships ship = ShipsDao.selectShip(shipId);
             cruise.setPassenger_capacity(ship.getPassenger_capacity());
             cruise.setRoute(ship.getRoute());
-            cruise.setPrice(rs.getDouble("price"));
+            cruise.setPrice(rs.getBigDecimal("price"));
             cruise.setPorts_number(ship.getPorts_number());
             cruise.setStart_cruise_date(rs.getDate("start_cruise"));
             cruise.setEnd_cruise_date(rs.getDate("end_cruise"));
@@ -73,7 +74,7 @@ public class CruiseDao {
         try(Connection con = cm.getConnection();
             PreparedStatement preparedStatement = con.prepareStatement(INSERT_INTO_USERS))
         {
-            preparedStatement.setDouble(1,cruise.getPrice());
+            preparedStatement.setBigDecimal(1,cruise.getPrice());
             preparedStatement.setDate(2,cruise.getStart_cruise_date());
             preparedStatement.setDate(3,cruise.getEnd_cruise_date());
             preparedStatement.setString(4,cruise.getCruise_name());
@@ -96,7 +97,7 @@ public class CruiseDao {
         try(Connection con = cm.getConnection();
             PreparedStatement preparedStatement = con.prepareStatement(INSERT_INTO_USERS))
         {
-            preparedStatement.setDouble(1,cruise.getPrice());
+            preparedStatement.setBigDecimal(1,cruise.getPrice());
             preparedStatement.setDate(2,cruise.getStart_cruise_date());
             preparedStatement.setDate(3,cruise.getEnd_cruise_date());
             preparedStatement.setString(4,cruise.getCruise_name());
@@ -159,6 +160,21 @@ public class CruiseDao {
         }
     }
 
+    public static void updateStatusCompleted() {
+        java.util.Date utilPackageDate = new java.util.Date();
+        java.sql.Date date = new java.sql.Date(utilPackageDate.getTime());
+        try(Connection con = cm.getConnection()) {
+            PreparedStatement pst = con.prepareStatement("UPDATE cruise SET statuse = ? where end_cruise = ? and statuse = ?");
+            pst.setInt(1, CruiseStatusEnum.COMPLETED.ordinal());
+            pst.setDate(2, date);
+            pst.setInt(3, CruiseStatusEnum.REGISTERED.ordinal());
+            pst.execute();
+            System.out.println(pst.execute());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public List<Cruise> getOrderedCruises(){
         List<Cruise> cruises = new ArrayList<Cruise>();
@@ -214,7 +230,7 @@ public class CruiseDao {
                 while (rs.next()) {
                     row = new Cruise();
                     row.setId(rs.getInt("id"));
-                    row.setPrice(rs.getDouble("price"));
+                    row.setPrice(rs.getBigDecimal("price"));
                     row.setStart_cruise_date(rs.getDate("start_cruise"));
                     row.setEnd_cruise_date(rs.getDate("end_cruise"));
                     row.setCruise_name(rs.getString("cruise_name"));
@@ -230,17 +246,17 @@ public class CruiseDao {
         return row;
     }
 
-    public static double maxPrice() {
-        double max = 0.;
+    public static BigDecimal maxPrice() {
+        BigDecimal max = new BigDecimal(0);
         try(Connection con = cm.getConnection();
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery("SELECT price FROM cruise")){
             if(rs.next()){
-                max = rs.getDouble(1);
+                max = rs.getBigDecimal(1);
             }
             while(rs.next()){
-                if(max < rs.getDouble(1)){
-                    max = rs.getDouble(1);
+                if(max.compareTo(rs.getBigDecimal(1)) < 0){
+                    max = rs.getBigDecimal(1);
                 }
             }
             return max;
@@ -249,17 +265,17 @@ public class CruiseDao {
         }
     }
 
-    public static double minPrice() {
-        double min = 0.;
+    public static BigDecimal minPrice() {
+        BigDecimal min = new BigDecimal(0);
         try(Connection con = cm.getConnection();
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery("SELECT price FROM cruise")){
             if(rs.next()){
-                min = rs.getDouble(1);
+                min = rs.getBigDecimal(1);
             }
             while(rs.next()){
-                if(min > rs.getDouble(1)){
-                    min = rs.getDouble(1);
+                if(min.compareTo(rs.getBigDecimal(1)) > 0){
+                    min = rs.getBigDecimal(1);
                 }
             }
             return min;

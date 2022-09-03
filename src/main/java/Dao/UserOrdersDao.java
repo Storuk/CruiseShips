@@ -5,6 +5,7 @@ import Entities.UserOrders;
 import Enums.CruiseStatusEnum;
 import connection.ConnectionManager;
 
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ public class UserOrdersDao {
             pst.setInt(3, model.getQuantity());
             pst.setInt(4, model.getStatusId().ordinal());
             pst.setString(5, model.getDate());
-            pst.setDouble(6, model.getPaymentAmount());
+            pst.setBigDecimal(6, model.getPaymentAmount());
             pst.setString(7, model.getImages());
             pst.setString(8,model.getCruise_name());
             pst.executeUpdate();
@@ -34,11 +35,11 @@ public class UserOrdersDao {
         return result;
     }
 
-    public static int PayForCruise(int id, double sum) throws ClassNotFoundException, SQLException {
+    public static int PayForCruise(int id, BigDecimal sum) throws ClassNotFoundException, SQLException {
         int i = 0;
         try(Connection con = cm.getConnection();
             PreparedStatement pst = con.prepareStatement("UPDATE users SET uscore = uscore - ? where id = ?")) {
-            pst.setDouble(1, sum);
+            pst.setBigDecimal(1, sum);
             pst.setInt(2, id);
             i = pst.executeUpdate();
         } catch (Exception e) {
@@ -58,7 +59,7 @@ public class UserOrdersDao {
                     order.setOrderId(rs.getInt("order_id"));
                     order.setId(rs.getInt("cruise_id"));
                     order.setCruise_name(rs.getString("cruise_name"));
-                    order.setPaymentAmount(rs.getDouble("payment_amount"));
+                    order.setPaymentAmount(rs.getBigDecimal("payment_amount"));
                     order.setQuantity(rs.getInt("order_quantity"));
                     order.setDate(rs.getString("order_date"));
                     StatusCheck(list, order, rs);
@@ -106,7 +107,7 @@ public class UserOrdersDao {
                 order.setId(rs.getInt("cruise_id"));
                 order.setCruise_name(rs.getString("cruise_name"));
                 order.setU_id(rs.getInt("user_id"));
-                order.setPaymentAmount(rs.getDouble("payment_amount"));
+                order.setPaymentAmount(rs.getBigDecimal("payment_amount"));
                 order.setQuantity(rs.getInt("order_quantity"));
                 order.setDate(rs.getString("order_date"));
                 order.setImages(rs.getString("images"));

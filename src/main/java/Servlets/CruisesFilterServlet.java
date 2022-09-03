@@ -7,6 +7,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,21 +31,21 @@ public class CruisesFilterServlet extends HttpServlet {
 
         List<Cruise> cruises = new ArrayList<>();
 
-        double min_priceNumber;
-        double max_priceNumber;
+        BigDecimal min_priceNumber;
+        BigDecimal max_priceNumber;
         Date dateFrom;
         int durationDB;
 
         if(Objects.equals(min_price, "")){
             min_priceNumber = CruiseDao.minPrice();
         }else{
-            min_priceNumber = Double.parseDouble((request.getParameter("min_price")));
+            min_priceNumber = new BigDecimal((request.getParameter("min_price")));
         }
 
         if(Objects.equals(max_price, "")){
             max_priceNumber = CruiseDao.maxPrice();
         }else{
-            max_priceNumber = Double.parseDouble(request.getParameter("max_price"));
+            max_priceNumber = new BigDecimal(request.getParameter("max_price"));
         }
 
         if(Objects.equals(duration, "")){

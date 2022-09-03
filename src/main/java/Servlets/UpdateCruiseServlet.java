@@ -14,6 +14,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.Objects;
@@ -58,7 +59,7 @@ public class UpdateCruiseServlet extends HttpServlet {
                 }
             }
 
-            cruise.setPrice(Double.parseDouble(price));
+            cruise.setPrice(new BigDecimal(price));
             cruise.setStart_cruise_date(start_cruise_date);
             cruise.setEnd_cruise_date(end_cruise_date);
             cruise.setCruise_name(cruise_name);

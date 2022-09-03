@@ -11,6 +11,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
 import java.sql.SQLException;
 
 @WebServlet(name = "AddBalanceServlet", value = "/AddBalance")
@@ -32,6 +33,7 @@ public class AddBalanceServlet extends HttpServlet {
             String username = String.valueOf(user.getUsername());
             String password = String.valueOf(user.getPassword());
             String new_balance = request.getParameter("balance");
+            System.out.println(new_balance);
             String card_number = request.getParameter("card_number");
             if(card_number.length()<16){
                 request.setAttribute("status", "invalid_card_format");
@@ -40,7 +42,7 @@ public class AddBalanceServlet extends HttpServlet {
             }
             else {
                 try {
-                    UserDao.AddMoney(Integer.parseInt(id), Double.parseDouble(new_balance));
+                    UserDao.AddMoney(Integer.parseInt(id), new BigDecimal(new_balance));
                     User update = UserDao.validate(username, password);
                     request.getSession().setAttribute("user", update);
                     logger.info("Balance added");

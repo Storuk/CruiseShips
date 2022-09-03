@@ -8,6 +8,7 @@
 <%@ page isELIgnored="false"%>
 
 <%
+    CruiseDao.updateStatusCompleted();
     CruiseDao cr = new CruiseDao();
     List<Cruise> cruises = cr.getAllCruises();
 

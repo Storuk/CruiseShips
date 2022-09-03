@@ -80,13 +80,13 @@
                     </select>
                 </div>
 
-                <input placeholder="Price" type="text" name="price" id="price">
+                <input placeholder="Price" min="1" step="any" type="number" name="price" id="price">
 
             </div>
 
             <div class = "flex-column">
 
-                <input placeholder="Duration" type="text" name="duration" id="duration">
+                <input placeholder="Duration" min="1" type="number" name="duration" id="duration">
 
                 <div class="date-picker">
                     <div>

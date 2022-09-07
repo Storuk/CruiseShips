@@ -86,7 +86,6 @@
                                     <p class="text-center text-muted mt-5 mb-0" style="margin-top: 0 !important;"><fmt:message key="lable.haveaccount"/> <a href="/final_project2/login"
                                                                                                             class="fw-bold text-body"><u><fmt:message key="lable.loginhere"/></u></a></p>
                                 </form>
-
                             </div>
                             <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
 

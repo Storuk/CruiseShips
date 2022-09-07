@@ -24,7 +24,6 @@
 %>
 
 <!DOCTYPE html>
-<html language = "${param.lang}">
 <head>
     <title>Cruise Ships</title>
 

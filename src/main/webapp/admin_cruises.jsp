@@ -127,7 +127,6 @@
             if (!cruises.isEmpty()){
                 for (Cruise c:cruises){
         %>
-
             <div class="col-md-4 my-3" style="padding-bottom: 2rem;">
                 <div class="card" style="width: 19rem; height: 26rem; margin: auto" >
                     <img class="card-img-top" src="cruises_images/<%= c.getImage()%>" style="width: auto; height: 200px" alt="Card image cap">

@@ -86,7 +86,6 @@ response.sendRedirect("admin_cruises.jsp");
                                                                                                           class="fw-bold text-body"><u><fmt:message key="lable.updateBack"/></u></a></p>
 
                                 </form>
-
                             </div>
                         </div>
                     </div>

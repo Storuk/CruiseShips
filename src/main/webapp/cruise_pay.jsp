@@ -67,7 +67,6 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" href="alert/dist/sweetalert.css">
 <script type="text/javascript">
-
     var status = document.getElementById("status").value;
     if(status == "not_enough_balance"){
         swal("Error", "Not enough Balance: <%=user.getScore()%>", "error");

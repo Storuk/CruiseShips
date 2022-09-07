@@ -51,7 +51,6 @@
                                                                                         class="fw-bold text-body"><u><fmt:message key="lable.registerhere"/></u></a></p>
 
                 </form>
-
               </div>
               <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
 

@@ -20,7 +20,6 @@
     request.setAttribute("cart_list", cart_list);
   }
 %>
-
 <!DOCTYPE html>
 <html>
 <head>

@@ -29,8 +29,8 @@
 
 </head>
 <body>
-<%  session.setAttribute("responsePage", "user_profile.jsp");
-    if(session.getAttribute("language") != null){%>
+<% session.setAttribute("responsePage", "user_profile.jsp");
+if(session.getAttribute("language") != null){%>
 <fmt:setLocale value="${sessionScope.language}"/>
 <%}else{%>
 <fmt:setLocale value="uk"/>

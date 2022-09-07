@@ -120,7 +120,6 @@
                 </div>
 
             </div>
-
         </div>
         <div style="margin-top: 2rem;">
             <button type="submit" style="margin-bottom: 1rem;" value="Submit" id="button"><fmt:message key="lable.addCruiseButton"/></button>

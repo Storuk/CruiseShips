@@ -29,16 +29,14 @@ public class UpdateCruiseServlet extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(UserLoginServlet.class);
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try (PrintWriter out = response.getWriter()) {
-            if((request.getParameter("id") != null)) {
-                int id = Integer.parseInt(request.getParameter("id"));
-                Cruise cr = CruiseDao.getSingleProduct(id);
-                request.setAttribute("updateCruise", cr);
-                request.setAttribute("cruiseId", id);
-            }
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/cruise_update.jsp");
-            dispatcher.forward(request, response);
+        if((request.getParameter("id") != null)) {
+            int id = Integer.parseInt(request.getParameter("id"));
+            Cruise cr = CruiseDao.getSingleProduct(id);
+            request.setAttribute("updateCruise", cr);
+            request.setAttribute("cruiseId", id);
         }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/cruise_update.jsp");
+        dispatcher.forward(request, response);
     }
 
     @Override

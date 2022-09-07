@@ -50,8 +50,6 @@ public class AddCruiseServlet extends HttpServlet {
         String full_filename = cruise_name + fileName;
         CruiseStatusEnum statusEnum = CruiseStatusEnum.REGISTERED;
 
-
-
         if(ship_id != null) {
             try {
                 ship = ShipsDao.selectShip(Integer.parseInt(ship_id));
@@ -69,7 +67,6 @@ public class AddCruiseServlet extends HttpServlet {
         cruise.setPlaces(ship.getPassenger_capacity());
         cruise.setStatuse(statusEnum);
         cruise.setImage(full_filename);
-
 
         try {
             if (!CruiseDao.cruiseNameCheck(cruise_name)) {

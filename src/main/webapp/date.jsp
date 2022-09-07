@@ -77,13 +77,13 @@
 </nav>
 <div style="display: flex; align-items: center; flex-direction: column; margin-top: 4rem;">
     <form style = "position: relative; background-color: #ffffff; border-radius: 20px; box-shadow: 0 0 10px #000000; max-width: 1200px; font-weight:600; font-family: 'Mulish', sans-serif;" action="AddCruiseServlet" method="post" enctype="multipart/form-data">
-        <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Add new cruiser</p>
+        <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4"><fmt:message key="lable.addCruise"/></p>
         <div class="flex-row">
             <div class = "flex-column">
-                <input placeholder="Cruise Name" type="text" name="cruise_name" id="cruise_name">
+                <input placeholder="<fmt:message key="lable.addCruiseName"/>" type="text" name="cruise_name" id="cruise_name">
 
                 <div class="ship-name">
-                    <label for = "ship_name" id="cs" >Ship name</label>
+                    <label for = "ship_name" id="cs" ><fmt:message key="lable.addCruiseShip"/></label>
                     <select name = "ship_name" id = "ship_name" value="3">
                         <option value="1">Symphony of the Seas</option>
                         <option value="2">Harmony of the Seas</option>
@@ -93,29 +93,29 @@
                     </select>
                 </div>
 
-                <input placeholder="Price" min="1" step="any" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" type="number" name="price" id="price">
+                <input placeholder="<fmt:message key="lable.addCruisePrice"/>" min="1" step="any" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" type="number" name="price" id="price">
 
             </div>
 
             <div class = "flex-column">
 
-                <input placeholder="Duration" min="1" type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" name="duration" id="duration">
+                <input placeholder="<fmt:message key="lable.addCruiseDuration"/>" min="1" type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" name="duration" id="duration">
 
                 <div class="date-picker">
                     <div>
-                        <label for="start_cruise_date">Start Cruise Date</label>
+                        <label for="start_cruise_date"><fmt:message key="lable.addCruiseStartDate"/></label>
                         <input placeholder="Start Cruise Date" type="date" name="start_cruise_date" id="start_cruise_date">
                     </div>
 
                     <div>
-                        <label for="end_cruise_date">End Cruise Date</label>
+                        <label for="end_cruise_date"><fmt:message key="lable.addCruiseEndDate"/></label>
                         <input placeholder="End Cruise Date" type="date" name="end_cruise_date" id="end_cruise_date">
                     </div>
 
                 </div>
 
                 <div class="file-chooser">
-                    <label for="formFileDisabled">Upload your documents:</label>
+                    <label for="formFileDisabled"><fmt:message key="lable.addCruisePhoto"/>:</label>
                     <input class="form-control" type="file" required = "required" name="file" size="60" id="formFileDisabled" />
                 </div>
 
@@ -123,7 +123,7 @@
 
         </div>
         <div style="margin-top: 2rem;">
-            <button type="submit" style="margin-bottom: 1rem;" value="Submit" id="button">Add</button>
+            <button type="submit" style="margin-bottom: 1rem;" value="Submit" id="button"><fmt:message key="lable.addCruiseButton"/></button>
         </div>
     </form>
 </div>

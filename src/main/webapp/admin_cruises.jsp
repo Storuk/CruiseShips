@@ -2,6 +2,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="Entities.Cruise" %>
 <%@ page import="Entities.Cart" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
@@ -34,11 +35,23 @@
 
 </head>
 <body style="min-height: 100vh">
+<%  session.setAttribute("responsePage", "admin_cruises.jsp");
+    if(session.getAttribute("language") != null){%>
+<fmt:setLocale value="${sessionScope.language}"/>
+<%}else{%>
 <fmt:setLocale value="uk"/>
+<%}%>
 <fmt:setBundle basename="language"/>
+<input type = "hidden" id = "status" value="<%= request.getAttribute("status")%>">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand"><i class="fa fa-ship" aria-hidden="true"></i><fmt:message key="lable.header"/></a>
+        <ul class="navbar-nav  mb-lg-0">
+            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="Language?language=uk"><fmt:setLocale value="uk"/><img style="width: 40px;" src="images/UA.png"></a></li>
+        </ul>
+        <ul class="navbar-nav  mb-lg-0">
+            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="Language?language=en"><fmt:setLocale value="en"/><img style="width: 40px;" src="images/EN.png"></a></li>
+        </ul>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon">
 
@@ -137,4 +150,13 @@
     </div>
 </div>
 </body>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" href="alert/dist/sweetalert.css">
+<script type="text/javascript">
+    var status = document.getElementById("status").value;
+    if(status == "cruise_in_progress"){
+        swal("Something went wrong", "Cruise already started. You can`t delete it", "error");
+    }
+
+</script>
 </html>

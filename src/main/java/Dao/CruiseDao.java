@@ -32,11 +32,12 @@ public class CruiseDao {
         List<Cruise> cruises = new ArrayList<Cruise>();
 
         try(Connection con = cm.getConnection();
-            PreparedStatement pst = con.prepareStatement("select * from cruise WHERE price BETWEEN ? AND ? AND start_cruise >= ? AND duration >= ?")) {
+            PreparedStatement pst = con.prepareStatement("select * from cruise WHERE price BETWEEN ? AND ? AND start_cruise >= ? AND duration >= ? and statuse = ?")) {
             pst.setBigDecimal(1,min_price);
             pst.setBigDecimal(2,max_price);
             pst.setDate(3,date);
             pst.setInt(4,duration);
+            pst.setInt(5, CruiseStatusEnum.REGISTERED.ordinal());
             SelectCruise(cruises, pst);
         }
         catch (Exception e){
@@ -169,7 +170,6 @@ public class CruiseDao {
             pst.setDate(2, date);
             pst.setInt(3, CruiseStatusEnum.REGISTERED.ordinal());
             pst.execute();
-            System.out.println(pst.execute());
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -250,7 +250,7 @@ public class CruiseDao {
         BigDecimal max = new BigDecimal(0);
         try(Connection con = cm.getConnection();
             Statement statement = con.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT price FROM cruise")){
+            ResultSet rs = statement.executeQuery("SELECT price FROM cruise where statuse = 0")){
             if(rs.next()){
                 max = rs.getBigDecimal(1);
             }
@@ -269,7 +269,7 @@ public class CruiseDao {
         BigDecimal min = new BigDecimal(0);
         try(Connection con = cm.getConnection();
             Statement statement = con.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT price FROM cruise")){
+            ResultSet rs = statement.executeQuery("SELECT price FROM cruise where statuse = 0")){
             if(rs.next()){
                 min = rs.getBigDecimal(1);
             }
@@ -279,6 +279,7 @@ public class CruiseDao {
                 }
             }
             return min;
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

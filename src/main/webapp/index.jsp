@@ -36,17 +36,22 @@
 
 </head>
 <body style="min-height: 100vh">
-<fmt:setLocale value="${param.language}"/>
+<%  session.setAttribute("responsePage", "index.jsp");
+    if(session.getAttribute("language") != null){%>
+<fmt:setLocale value="${sessionScope.language}"/>
+<%}else{%>
+<fmt:setLocale value="uk"/>
+<%}%>
 <fmt:setBundle basename="language"/>
 <input type = "hidden" id = "status" value="<%= request.getAttribute("status")%>">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand"><i class="fa fa-ship" aria-hidden="true"></i><fmt:message key="lable.header"/></a>
         <ul class="navbar-nav  mb-lg-0">
-            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="?language=uk"><fmt:setLocale value="uk"/><img style="width: 40px;" src="images/UA.png"></a></li>
+            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="Language?language=uk"><fmt:setLocale value="uk"/><img style="width: 40px;" src="images/UA.png"></a></li>
         </ul>
         <ul class="navbar-nav  mb-lg-0">
-            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="?language=en"><fmt:setLocale value="en"/><img style="width: 40px;" src="images/EN.png"></a></li>
+            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="Language?language=en"><fmt:setLocale value="en"/><img style="width: 40px;" src="images/EN.png"></a></li>
         </ul>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon">

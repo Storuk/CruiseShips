@@ -27,16 +27,14 @@ public class CancelOrderServlet extends HttpServlet {
             String money = request.getParameter("money");
             int quantity = Integer.parseInt(request.getParameter("quantity"));
             int cruiseId = Integer.parseInt(request.getParameter("cruiseId"));
-            //System.out.println(id);
             if(id != null) {
-                logger.info("Order_cancelled");
                 UserOrdersDao orderDao = new UserOrdersDao();
                 orderDao.CancelOrder(Integer.parseInt(id));
                 CruiseDao.UpdatePlusCruisePlaces(cruiseId, quantity);
                 UserDao.AddMoney(Integer.parseInt(userId), new BigDecimal(money));
+                logger.info("Order_cancelled");
             }
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/requests.jsp");
-            requestDispatcher.forward(request,response);
+            response.sendRedirect("requests.jsp");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }

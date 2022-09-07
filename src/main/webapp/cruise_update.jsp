@@ -1,5 +1,7 @@
 <%@ page import="Entities.Cruise" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% Cruise cruise = (Cruise) request.getAttribute("updateCruise");
 if(request.getAttribute("updateCruise") == null)
 response.sendRedirect("admin_cruises.jsp");
@@ -12,6 +14,12 @@ response.sendRedirect("admin_cruises.jsp");
     <link rel="stylesheet" href="css/stylelogin.css">
 </head>
 <body style="min-height: 100vh">
+<%if(session.getAttribute("language") != null){%>
+<fmt:setLocale value="${sessionScope.language}"/>
+<%}else{%>
+<fmt:setLocale value="uk"/>
+<%}%>
+<fmt:setBundle basename="language"/>
 <input type = "hidden" id = "status" value="<%= request.getAttribute("status")%>">
 <section class="vh-100">
     <div class="container h-100">
@@ -60,7 +68,7 @@ response.sendRedirect("admin_cruises.jsp");
                                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
                                                 <label class="form-label"  for="form3Example2c">Price:</label>
-                                                <input type="text" name = "price" value="<%=cruise.getPrice()%>" required = "required" placeholder="Login" id="form3Example2c" class="form-control" />
+                                                <input type="text" name = "price" value="<%=cruise.getPrice()%>" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required = "required" placeholder="Login" id="form3Example2c" class="form-control" />
                                             </div>
                                         </div>
                                         <div class="d-flex flex-row align-items-center mb-4">

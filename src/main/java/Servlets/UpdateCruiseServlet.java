@@ -2,6 +2,7 @@ package Servlets;
 
 import Dao.CruiseDao;
 import Dao.ShipsDao;
+import Dao.UserOrdersDao;
 import Entities.Cruise;
 import Entities.Ships;
 import org.slf4j.Logger;
@@ -45,11 +46,22 @@ public class UpdateCruiseServlet extends HttpServlet {
 
             String price = request.getParameter("price");
             Date start_cruise_date = Date.valueOf(request.getParameter("start_cruise_date"));
+            System.out.println(start_cruise_date);
             Date end_cruise_date = Date.valueOf(request.getParameter("end_cruise_date"));
+            System.out.println(end_cruise_date);
             String cruise_name = request.getParameter("cruise_name");
             String duration = request.getParameter("duration");
             String ship_id = request.getParameter("ship_name");
             int id = Integer.parseInt(request.getParameter("cruiseId"));
+
+            //java.util.Date utilPackageDate = new java.util.Date();
+            //java.sql.Date date = new java.sql.Date(utilPackageDate.getTime());
+            //Cruise cruise = CruiseDao.getSingleProduct(id);
+            //if(date.compareTo(cruise.getStart_cruise_date()) >= 0 && date.compareTo(cruise.getEnd_cruise_date()) <= 0){
+            //    request.setAttribute("status", "cruise_in_progress");
+            //    RequestDispatcher dispatcher = request.getRequestDispatcher("admin_cruises.jsp");
+            //    dispatcher.forward(request, response);
+            //}
 
             if (ship_id != null) {
                 try {
@@ -68,14 +80,14 @@ public class UpdateCruiseServlet extends HttpServlet {
             cruise.setPlaces(ship.getPassenger_capacity());
 
             try {
+                UserOrdersDao.selectOrdersAndUpdateBalance(id);
+                UserOrdersDao.deleteOrders(id);
                 CruiseDao.updateCruise(cruise,id);
                 logger.info("Cruise updated");
             } catch (ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }
-            request.setAttribute("status", "Uploaded");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("admin_cruises.jsp");
-            dispatcher.forward(request, response);
+            response.sendRedirect("admin_cruises.jsp");
     }
 }
 

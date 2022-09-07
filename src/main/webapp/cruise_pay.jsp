@@ -1,4 +1,5 @@
 <%@ page import="Entities.User" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% User user = (User) session.getAttribute("user");%>
@@ -11,7 +12,11 @@
           href="fonts/material-icon/css/material-design-iconic-font.min.css">
 </head>
 <body>
+<%if(session.getAttribute("language") != null){%>
+<fmt:setLocale value="${sessionScope.language}"/>
+<%}else{%>
 <fmt:setLocale value="uk"/>
+<%}%>
 <fmt:setBundle basename="language"/>
 <input type = "hidden" id = "status" value="<%= request.getAttribute("status")%>">
 <section class="vh-100">

@@ -25,26 +25,20 @@ public class UserLoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-
+        HttpSession session = request.getSession();
         try {
-            if(username!=null || password != null){
-                HttpSession session = request.getSession();
                 User user = UserDao.validate(username, hashPassword(password));
                 if (user != null) {
                     logger.info("User_Login_successfully");
                     session.setAttribute("User",username);
                     request.getSession().setAttribute("user", user);
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/user_profile.jsp");
-                    dispatcher.forward(request, response);
+                    response.sendRedirect("user_profile.jsp");
                 } else {
                     request.setAttribute("status", "invalid_log_or_pass");
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
                     dispatcher.forward(request, response);
                 }
-            }
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
-            dispatcher.forward(request, response);
-        } catch (ClassNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

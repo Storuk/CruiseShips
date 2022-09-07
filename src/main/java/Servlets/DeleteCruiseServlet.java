@@ -2,6 +2,7 @@ package Servlets;
 
 import Dao.CruiseDao;
 import Dao.UserOrdersDao;
+import Entities.Cruise;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,13 +20,31 @@ public class DeleteCruiseServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             if((request.getParameter("id") != null)) {
                 int id = Integer.parseInt(request.getParameter("id"));
-                CruiseDao.deleteCruise(id);
+                java.util.Date utilPackageDate = new java.util.Date();
+                java.sql.Date date = new java.sql.Date(utilPackageDate.getTime());
+                Cruise cruise = CruiseDao.getSingleProduct(id);
+               // if(date.compareTo(cruise.getStart_cruise_date()) >= 0 && date.compareTo(cruise.getEnd_cruise_date()) <= 0){
+               //     request.setAttribute("status", "cruise_in_progress");
+               //     RequestDispatcher dispatcher = request.getRequestDispatcher("/admin_cruises.jsp");
+               //     dispatcher.forward(request, response);
+               // }
+                if(date.compareTo(cruise.getStart_cruise_date()) < 0){
+                    UserOrdersDao.selectOrdersAndUpdateBalance(id);
+                    UserOrdersDao.deleteOrders(id);
+                    CruiseDao.deleteCruise(id);
+                }
+                else{
+                    UserOrdersDao.deleteOrders(id);
+                    CruiseDao.deleteCruise(id);
+                }
+                //UserOrdersDao.updateDeletedStatusOrders(id);
                 logger.info("Cruise deleted");
-                UserOrdersDao.updateDeletedStatusOrders(id);
-                //UserOrdersDao.deleteOrders(id);
+                response.sendRedirect("admin_cruises.jsp");
             }
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/admin_cruises.jsp");
-            dispatcher.forward(request, response);
+            else {
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/admin_cruises.jsp");
+                dispatcher.forward(request, response);
+            }
         }
     }
 

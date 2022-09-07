@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
@@ -9,7 +10,11 @@
           href="fonts/material-icon/css/material-design-iconic-font.min.css">
 </head>
 <body>
+<%if(session.getAttribute("language") != null){%>
+<fmt:setLocale value="${sessionScope.language}"/>
+<%}else{%>
 <fmt:setLocale value="uk"/>
+<%}%>
 <fmt:setBundle basename="language"/>
 <input type = "hidden" id = "status" value="<%= request.getAttribute("status")%>">
 <section class="vh-100">
@@ -55,7 +60,7 @@
                                             <div class="d-flex flex-row align-items-center mb-4">
                                                 <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                                 <div class="form-outline flex-fill mb-0">
-                                                    <input type="number" min="1" step="any" name = "balance" required = "required" placeholder="<fmt:message key="lable.sumbalance"/>" id="form3Example1c" class="form-control" />
+                                                    <input type="number" min="1" step="any" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" name = "balance" required = "required" placeholder="<fmt:message key="lable.sumbalance"/>" id="form3Example1c" class="form-control" />
                                                     <label class="form-label"  for="form3Example1c"></label>
                                                 </div>
                                             </div>

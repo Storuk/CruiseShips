@@ -53,8 +53,8 @@ public class UserOrdersDao {
         try(Connection con = cm.getConnection();
             PreparedStatement pst = con.prepareStatement("select * from orders where user_id=? order by orders.statusId")) {
             pst.setInt(1, id);
-            ResultSet rs = pst.executeQuery();
-            while (rs.next()) {
+            try(ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {
                     UserOrders order = new UserOrders();
                     order.setOrderId(rs.getInt("order_id"));
                     order.setId(rs.getInt("cruise_id"));
@@ -63,6 +63,7 @@ public class UserOrdersDao {
                     order.setQuantity(rs.getInt("order_quantity"));
                     order.setDate(rs.getString("order_date"));
                     StatusCheck(list, order, rs);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -80,7 +81,7 @@ public class UserOrdersDao {
         else if(rs.getInt("statusId") == 3){
             order.setStatusId(CruiseStatusEnum.CANCELED);
         }
-        else if(rs.getInt("statusId") == 6){
+        else if(rs.getInt("statusId") == 5){
             order.setStatusId(CruiseStatusEnum.DELETED_BY_ADMIN);
         }
         list.add(order);
@@ -153,6 +154,21 @@ public class UserOrdersDao {
             pst.execute();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void selectOrdersAndUpdateBalance(int id) {
+        try(Connection con = cm.getConnection();
+            PreparedStatement pst = con.prepareStatement("select * from orders where cruise_id = ?")){
+            pst.setInt(1,id);
+            try(ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {
+                    UserDao.AddMoney(rs.getInt("user_id"), rs.getBigDecimal("payment_amount"));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 

@@ -4,6 +4,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="Dao.UserOrdersDao" %>
 <%@ page import="Enums.CruiseStatusEnum" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
@@ -18,6 +19,7 @@
         orders = orderDao.userOrdersForAdmin();
     }
 %>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Title</title>
@@ -37,11 +39,22 @@
     <link rel="stylesheet" href="css/generalstyle.css">
 </head>
 <body>
+<%  session.setAttribute("responsePage", "requests.jsp");
+    if(session.getAttribute("language") != null){%>
+<fmt:setLocale value="${sessionScope.language}"/>
+<%}else{%>
 <fmt:setLocale value="uk"/>
+<%}%>
 <fmt:setBundle basename="language"/>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand"><i class="fa fa-ship" aria-hidden="true"></i><fmt:message key="lable.header"/></a>
+        <ul class="navbar-nav  mb-lg-0">
+            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="Language?language=uk"><fmt:setLocale value="uk"/><img style="width: 40px;" src="images/UA.png"></a></li>
+        </ul>
+        <ul class="navbar-nav  mb-lg-0">
+            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="Language?language=en"><fmt:setLocale value="en"/><img style="width: 40px;" src="images/EN.png"></a></li>
+        </ul>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon">
 
@@ -110,8 +123,11 @@
             <td><%=o.getQuantity() %></td>
             <td><%=dcf.format(o.getPaymentAmount()) %>$</td>
             <td><%=o.getStatusId() %></td>
-            <% if(o.getStatusId() == CruiseStatusEnum.IN_PROGRESS || o.getStatusId() == CruiseStatusEnum.DELETED_BY_ADMIN){ %>
+            <% if(o.getStatusId() == CruiseStatusEnum.IN_PROGRESS){ %>
             <td><a class="btn btn-sm btn-success" href="AcceptOrder?id=<%=o.getOrderId()%>"><fmt:message key="lable.acceptrequest"/></a></td>
+            <td><a class="btn btn-sm btn-danger" href="CancelOrder?money=<%=o.getPaymentAmount()%>&userId=<%=o.getU_id() %>&id=<%=o.getOrderId()%>&quantity=<%=o.getQuantity()%>&cruiseId=<%=o.getId()%>"><fmt:message key="lable.deleteorder"/></a></td>
+            <%} else if(o.getStatusId() == CruiseStatusEnum.DELETED_BY_ADMIN){ %>
+            <td><fmt:message key="lable.notallowed"/></td>
             <td><a class="btn btn-sm btn-danger" href="CancelOrder?money=<%=o.getPaymentAmount()%>&userId=<%=o.getU_id() %>&id=<%=o.getOrderId()%>&quantity=<%=o.getQuantity()%>&cruiseId=<%=o.getId()%>"><fmt:message key="lable.deleteorder"/></a></td>
             <%}
             else{%>

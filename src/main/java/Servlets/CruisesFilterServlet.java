@@ -63,9 +63,15 @@ public class CruisesFilterServlet extends HttpServlet {
             cruises = cruiseDao.getCruisesByFilters(min_priceNumber,
                     max_priceNumber,dateFrom, durationDB);
         }
-
         session.setAttribute("filtered_cruises", cruises);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
-        dispatcher.forward(request, response);
+
+        if(request.getSession().getAttribute("admin") != null) {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/admin_cruises.jsp");
+            dispatcher.forward(request, response);
+        }
+        else{
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+            dispatcher.forward(request, response);
+        }
     }
 }

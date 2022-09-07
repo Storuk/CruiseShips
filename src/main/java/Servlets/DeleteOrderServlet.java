@@ -23,7 +23,7 @@ public class DeleteOrderServlet extends HttpServlet {
         User user = (User) request.getSession().getAttribute("user");
         String username = String.valueOf(user.getUsername());
         String password = String.valueOf(user.getPassword());
-        try(PrintWriter out = response.getWriter()) {
+        try {
             String id = request.getParameter("id");
             String userId = request.getParameter("userId");
             String money = request.getParameter("money");

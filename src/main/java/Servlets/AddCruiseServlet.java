@@ -90,7 +90,7 @@ public class AddCruiseServlet extends HttpServlet {
                         dispatcher.forward(request, response);
                     } else {
                         request.setAttribute("status", "Invalid_photo_type");
-                        RequestDispatcher dispatcher = request.getRequestDispatcher("date.jsp");
+                        RequestDispatcher dispatcher = request.getRequestDispatcher("/date.jsp");
                         dispatcher.forward(request, response);
                     }
                 } else {

@@ -1,4 +1,5 @@
 <%@ page import="Entities.Cruise" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -18,11 +19,23 @@
 </head>
 <body style="min-height: 100vh">
 <input type = "hidden" id = "status" value="<%= request.getAttribute("status")%>">
+
+<%  session.setAttribute("responsePage", "date.jsp");
+    if(session.getAttribute("language") != null){%>
+<fmt:setLocale value="${sessionScope.language}"/>
+<%}else{%>
 <fmt:setLocale value="uk"/>
+<%}%>
 <fmt:setBundle basename="language"/>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand"><i class="fa fa-ship" aria-hidden="true"></i><fmt:message key="lable.header"/></a>
+        <ul class="navbar-nav  mb-lg-0">
+            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="Language?language=uk"><fmt:setLocale value="uk"/><img style="width: 40px;" src="images/UA.png"></a></li>
+        </ul>
+        <ul class="navbar-nav  mb-lg-0">
+            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="Language?language=en"><fmt:setLocale value="en"/><img style="width: 40px;" src="images/EN.png"></a></li>
+        </ul>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon">
 
@@ -80,13 +93,13 @@
                     </select>
                 </div>
 
-                <input placeholder="Price" min="1" step="any" type="number" name="price" id="price">
+                <input placeholder="Price" min="1" step="any" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" type="number" name="price" id="price">
 
             </div>
 
             <div class = "flex-column">
 
-                <input placeholder="Duration" min="1" type="number" name="duration" id="duration">
+                <input placeholder="Duration" min="1" type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" name="duration" id="duration">
 
                 <div class="date-picker">
                     <div>

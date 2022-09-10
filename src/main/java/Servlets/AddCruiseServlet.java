@@ -69,7 +69,7 @@ public class AddCruiseServlet extends HttpServlet {
         cruise.setImage(full_filename);
 
         try {
-            if (!CruiseDao.cruiseNameCheck(cruise_name)) {
+            if (!CruiseDao               .cruiseNameCheck(cruise_name)) {
                 Cruise valid = CruiseDao.date_validation(start_cruise_date, end_cruise_date, Integer.parseInt(ship_id));
                 if (valid == null) {
                     if (Objects.equals(fileName, ".jpg") || Objects.equals(fileName, ".png") || Objects.equals(fileName, ".svg")) {

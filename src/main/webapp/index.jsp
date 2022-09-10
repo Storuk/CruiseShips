@@ -4,11 +4,11 @@
 <%@ page import="Entities.Cart" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="tag" uri="tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page isELIgnored="false"%>
 
-<%
-    CruiseDao.updateStatusCompleted();
+<%  CruiseDao.updateStatusCompleted();
     CruiseDao cr = new CruiseDao();
     List<Cruise> cruises = cr.getAllCruises();
 
@@ -52,6 +52,7 @@
         <ul class="navbar-nav  mb-lg-0">
             <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="Language?language=en"><fmt:setLocale value="en"/><img style="width: 40px;" src="images/EN.png"></a></li>
         </ul>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon">
 
@@ -105,6 +106,7 @@
                     <a class="btn btn-outline-warning" aria-current="page" href="/final_project2/logout"><fmt:message key="lable.logout"/></a>
                 </li>
             </ul>
+
             <%
                 }
             %>
@@ -169,7 +171,7 @@
                     <h6 class="card-title"><fmt:message key="lable.passagercapacity"/>: <%= c.getPassenger_capacity()%> </h6>
                     <h6 class="card-title"><fmt:message key="lable.placesleft"/>: <%= c.getPlaces()%> </h6>
                     <h6 class="card-title"><fmt:message key="lable.price"/>: <%= c.getPrice()%>$ </h6>
-                    <h6 class="card-title"><fmt:message key="lable.dates"/>: (<%=c.getStart_cruise_date()%>)-(<%=c.getEnd_cruise_date()%>) </h6>
+                    <h6 class="card-title"><fmt:message key="lable.dates"/>: <tag:con str1="<%=String.valueOf(c.getStart_cruise_date())%>" str2="<%=String.valueOf(c.getEnd_cruise_date())%>"/> </h6>
                     <a href="AddToCartServlet?id=<%= c.getId()%>&places=<%= c.getPlaces()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><img style = "width: 36px; height: 32px;" src="https://cdn-user-icons.flaticon.com/5674/5674975/1661980912645.svg?token=exp=1661981813~hmac=52db715fe4bd66bf671a89b585744278"></a>
                 </div>
             </div>

@@ -1,7 +1,6 @@
 package Dao;
 
 import Entities.Ships;
-import Entities.User;
 import connection.ConnectionManager;
 
 import java.sql.Connection;

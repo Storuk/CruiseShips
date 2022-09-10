@@ -1,6 +1,5 @@
 package Dao;
 
-import Entities.Cruise;
 import Entities.UserOrders;
 import Enums.CruiseStatusEnum;
 import connection.ConnectionManager;

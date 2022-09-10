@@ -7,7 +7,6 @@ import connection.ConnectionManager;
 
 import java.math.BigDecimal;
 import java.sql.*;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,7 +70,6 @@ public class CruiseDao {
     public static int addCruise(Cruise cruise) throws ClassNotFoundException {
         String INSERT_INTO_USERS = "INSERT INTO cruise ( price, start_cruise, end_cruise, cruise_name, ship_id, places, image, duration, statuse) VALUES  ( ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         int result = 0;
-
         try(Connection con = cm.getConnection();
             PreparedStatement preparedStatement = con.prepareStatement(INSERT_INTO_USERS))
         {

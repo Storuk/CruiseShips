@@ -4,6 +4,7 @@ import Dao.CruiseDao;
 import Dao.ShipsDao;
 import Dao.UserOrdersDao;
 import Entities.Cruise;
+import Entities.DateUtil;
 import Entities.Ships;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +19,10 @@ import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Objects;
+import java.util.TimeZone;
 
 import static controller.security.PasswordEncrypt.ConvertImage;
 
@@ -41,7 +45,6 @@ public class UpdateCruiseServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
             String price = request.getParameter("price");
             Date start_cruise_date = Date.valueOf(request.getParameter("start_cruise_date"));
             System.out.println(start_cruise_date);
@@ -87,49 +90,5 @@ public class UpdateCruiseServlet extends HttpServlet {
             }
             response.sendRedirect("admin_cruises.jsp");
     }
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//try {
-//    if (!CruiseDao.cruiseNameCheck(cruise_name)) {
-//        Cruise valid = CruiseDao.date_validation(start_cruise_date, end_cruise_date, ship.getShip_name());
-//        if (valid == null) {
-//
-//            request.setAttribute("status", "Uploaded");
-//            RequestDispatcher dispatcher = request.getRequestDispatcher("cruise_update.jsp");
-//            dispatcher.forward(request, response);
-//        } else {
-//            request.setAttribute("dates", "(" + valid.getStart_cruise_date() + ") - (" + valid.getEnd_cruise_date() + ")");
-//            request.setAttribute("status", "Invalid_dates");
-//            RequestDispatcher dispatcher = request.getRequestDispatcher("cruise_update.jsp");
-//            dispatcher.forward(request, response);
-//        }
-//    }
-//    else{
-//        request.setAttribute("status", "Cruise_name_exist");
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("cruise_update.jsp");
-//        dispatcher.forward(request, response);
-//    }
-//}
-//catch (ClassNotFoundException e) {
-//    throw new RuntimeException(e);
-//}

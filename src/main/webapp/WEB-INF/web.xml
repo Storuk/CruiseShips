@@ -7,10 +7,13 @@
         <error-code>404</error-code>
         <location>/404.html</location>
     </error-page>
-    <error-page>
-        <error-code>500</error-code>
-        <location>/500.html</location>
-    </error-page>
+
+    <jsp-config>
+        <taglib>
+            <taglib-uri>tags</taglib-uri>
+            <taglib-location>/WEB-INF/tag.tld</taglib-location>
+        </taglib>
+    </jsp-config>
 
     <listener>
         <listener-class>Sesion_Filter_Listener.Listener</listener-class>
@@ -25,4 +28,5 @@
         <filter-name>LogFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
 </web-app>

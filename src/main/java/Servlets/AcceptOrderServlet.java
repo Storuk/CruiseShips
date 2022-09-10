@@ -26,9 +26,4 @@ public class AcceptOrderServlet extends HttpServlet {
             response.sendRedirect("requests.jsp");
         }
     }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 }

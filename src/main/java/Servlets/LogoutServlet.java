@@ -11,9 +11,9 @@ import java.io.IOException;
 @WebServlet(name = "LogoutServlet", value = "/logout")
 public class LogoutServlet extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(UserLoginServlet.class);
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html");
-        Cookie[] cookies = req.getCookies();
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        Cookie[] cookies = request.getCookies();
         if(cookies != null){
             for(Cookie cookie : cookies){
                 if(cookie.getName().equals("JSESSIONID")){
@@ -22,10 +22,9 @@ public class LogoutServlet extends HttpServlet {
                 }
             }
         }
-        HttpSession session = req.getSession(false);
-        System.out.println("User="+session.getAttribute("User"));
+        HttpSession session = request.getSession(false);
+        logger.info("User="+session.getAttribute("User")+" logout");
         session.invalidate();
-        logger.info("User logout");
-        resp.sendRedirect("index.jsp");
+        response.sendRedirect("index.jsp");
     }
 }

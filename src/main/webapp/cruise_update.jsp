@@ -20,7 +20,6 @@ response.sendRedirect("admin_cruises.jsp");
 <fmt:setLocale value="uk"/>
 <%}%>
 <fmt:setBundle basename="language"/>
-<input type = "hidden" id = "status" value="<%= request.getAttribute("status")%>">
 <section class="vh-100">
     <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -95,21 +94,4 @@ response.sendRedirect("admin_cruises.jsp");
     </div>
 </section>
 </body>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<link rel="stylesheet" href="alert/dist/sweetalert.css">
-<script type="text/javascript">
-    var status = document.getElementById("status").value;
-    if(status === "Invalid_photo_type"){
-        swal("Invalid photo type", "JPEG PNG SVG is allowed", "error");
-    }
-    else if(status == "Uploaded"){
-        swal("Congrats", "Cruise added successfully", "success");
-    }
-    else if(status == "Invalid_dates"){
-        swal("Something went wrong", "Dates <%=request.getAttribute("dates")%> already exist", "error");
-    }
-    else if(status == "Cruise_name_exist"){
-        swal("Error", "Cruise name already exist", "error");
-    }
-</script>
 </html>

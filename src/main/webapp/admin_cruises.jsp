@@ -5,6 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page isELIgnored="false"%>
 <%
     CruiseDao.updateStatusCompleted();
     CruiseDao cr = new CruiseDao();
@@ -156,6 +157,8 @@
     if(status == "cruise_in_progress"){
         swal("Something went wrong", "Cruise already started. You can`t delete it", "error");
     }
-
+    if(status == "cruise_started"){
+        swal("Something went wrong", "Cruise already started. You can`t update it", "error");
+    }
 </script>
 </html>

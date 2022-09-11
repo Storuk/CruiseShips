@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(filterName = "AdminLoginFilter", urlPatterns = {"/date.jsp", "/requests.jsp","/admin_cruises.jsp","/UpdateCruiseServlet","/cruise_update.jsp"})
+@WebFilter(filterName = "AdminLoginFilter", urlPatterns = {"/add_cruise.jsp", "/requests.jsp","/admin_cruises.jsp","/UpdateCruiseServlet","/cruise_update.jsp"})
 public class AdminLoginFilter implements Filter {
     public void init(FilterConfig config) throws ServletException {
     }

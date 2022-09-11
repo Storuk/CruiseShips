@@ -172,7 +172,7 @@
                     <h6 class="card-title"><fmt:message key="lable.placesleft"/>: <%= c.getPlaces()%> </h6>
                     <h6 class="card-title"><fmt:message key="lable.price"/>: <%= c.getPrice()%>$ </h6>
                     <h6 class="card-title"><fmt:message key="lable.dates"/>: <tag:con str1="<%=String.valueOf(c.getStart_cruise_date())%>" str2="<%=String.valueOf(c.getEnd_cruise_date())%>"/> </h6>
-                    <a href="AddToCartServlet?id=<%= c.getId()%>&places=<%= c.getPlaces()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><img style = "width: 36px; height: 32px;" src="https://cdn-user-icons.flaticon.com/5674/5674975/1661980912645.svg?token=exp=1661981813~hmac=52db715fe4bd66bf671a89b585744278"></a>
+                    <a href="AddToCartServlet?id=<%= c.getId()%>&places=<%= c.getPlaces()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><img style = "width: 36px; height: 32px;" src="images/buy.png"></a>
                 </div>
             </div>
         </div>

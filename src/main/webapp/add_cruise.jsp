@@ -20,7 +20,7 @@
 <body style="min-height: 100vh">
 <input type = "hidden" id = "status" value="<%= request.getAttribute("status")%>">
 
-<%  session.setAttribute("responsePage", "date.jsp");
+<%  session.setAttribute("responsePage", "add_cruise.jsp");
     if(session.getAttribute("language") != null){%>
 <fmt:setLocale value="${sessionScope.language}"/>
 <%}else{%>
@@ -48,7 +48,7 @@
             </ul>
             <ul class="navbar-nav  mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="date.jsp"><fmt:message key="lable.addcruise"/></a>
+                    <a class="nav-link active" aria-current="page" href=add_cruise.jsp"><fmt:message key="lable.addcruise"/></a>
                 </li>
             </ul>
             <ul class="navbar-nav  mb-lg-0">

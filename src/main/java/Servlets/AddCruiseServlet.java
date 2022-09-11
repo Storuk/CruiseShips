@@ -32,7 +32,7 @@ public class AddCruiseServlet extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(UserLoginServlet.class);
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect("date.jsp");
+        response.sendRedirect("add_cruise.jsp");
     }
 
     @Override
@@ -69,7 +69,7 @@ public class AddCruiseServlet extends HttpServlet {
         cruise.setImage(full_filename);
 
         try {
-            if (!CruiseDao               .cruiseNameCheck(cruise_name)) {
+            if (!CruiseDao.cruiseNameCheck(cruise_name)) {
                 Cruise valid = CruiseDao.date_validation(start_cruise_date, end_cruise_date, Integer.parseInt(ship_id));
                 if (valid == null) {
                     if (Objects.equals(fileName, ".jpg") || Objects.equals(fileName, ".png") || Objects.equals(fileName, ".svg")) {
@@ -83,23 +83,23 @@ public class AddCruiseServlet extends HttpServlet {
                         CruiseDao.addCruise(cruise);
                         logger.info("cruise added");
                         request.setAttribute("status", "Uploaded");
-                        RequestDispatcher dispatcher = request.getRequestDispatcher("/date.jsp");
+                        RequestDispatcher dispatcher = request.getRequestDispatcher("/add_cruise.jsp");
                         dispatcher.forward(request, response);
                     } else {
                         request.setAttribute("status", "Invalid_photo_type");
-                        RequestDispatcher dispatcher = request.getRequestDispatcher("/date.jsp");
+                        RequestDispatcher dispatcher = request.getRequestDispatcher("/add_cruise.jsp");
                         dispatcher.forward(request, response);
                     }
                 } else {
                     request.setAttribute("dates", "(" + valid.getStart_cruise_date() + ") - (" + valid.getEnd_cruise_date() + ")");
                     request.setAttribute("status", "Invalid_dates");
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/date.jsp");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/add_cruise.jsp");
                     dispatcher.forward(request, response);
                 }
             }
             else{
                 request.setAttribute("status", "Cruise_name_exist");
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/date.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/add_cruise.jsp");
                 dispatcher.forward(request, response);
             }
         }

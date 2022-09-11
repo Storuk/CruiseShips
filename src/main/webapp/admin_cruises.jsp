@@ -65,7 +65,7 @@
             </ul>
             <ul class="navbar-nav  mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="date.jsp"><fmt:message key="lable.addcruise"/></a>
+                    <a class="nav-link active" aria-current="page" href="add_cruise.jsp"><fmt:message key="lable.addcruise"/></a>
                 </li>
             </ul>
             <ul class="navbar-nav  mb-lg-0">

@@ -65,13 +65,8 @@ public class CruisesFilterServlet extends HttpServlet {
         }
         session.setAttribute("filtered_cruises", cruises);
 
-        if(request.getSession().getAttribute("admin") != null) {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/admin_cruises.jsp");
-            dispatcher.forward(request, response);
-        }
-        else{
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
-            dispatcher.forward(request, response);
-        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher((String) request.getSession().getAttribute("responsePage"));
+        dispatcher.forward(request, response);
+
     }
 }

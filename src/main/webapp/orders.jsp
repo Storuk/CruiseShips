@@ -2,9 +2,6 @@
 <%@ page import="Entities.User" %>
 <%@ page import="Entities.Cart" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="Entities.UserOrders" %>
-<%@ page import="java.util.List" %>
-<%@ page import="Dao.UserOrdersDao" %>
 <%@ page import="Enums.CruiseStatusEnum" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

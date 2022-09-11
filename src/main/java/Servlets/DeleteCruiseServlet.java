@@ -41,7 +41,6 @@ public class DeleteCruiseServlet extends HttpServlet {
                     response.sendRedirect("admin_cruises.jsp");
                     logger.info("Cruise deleted");
                 }
-                //UserOrdersDao.updateDeletedStatusOrders(id);
 
             }
             else {

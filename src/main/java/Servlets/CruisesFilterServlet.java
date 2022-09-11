@@ -28,7 +28,7 @@ public class CruisesFilterServlet extends HttpServlet {
         String duration = request.getParameter("duration");
         String min_price = request.getParameter("min_price");
         String max_price = request.getParameter("max_price");
-
+        String page = (String) request.getSession().getAttribute("responsePage");
         List<Cruise> cruises = new ArrayList<>();
 
         BigDecimal min_priceNumber;
@@ -37,13 +37,23 @@ public class CruisesFilterServlet extends HttpServlet {
         int durationDB;
 
         if(Objects.equals(min_price, "")){
-            min_priceNumber = CruiseDao.minPrice();
+            if(Objects.equals(page, "index.jsp")){
+                min_priceNumber = CruiseDao.minPrice();
+            }
+            else{
+                min_priceNumber = CruiseDao.minPriceForAdmin();
+            }
         }else{
             min_priceNumber = new BigDecimal((request.getParameter("min_price")));
         }
 
         if(Objects.equals(max_price, "")){
-            max_priceNumber = CruiseDao.maxPrice();
+            if(Objects.equals(page, "index.jsp")){
+                max_priceNumber = CruiseDao.maxPrice();
+            }
+            else{
+                max_priceNumber = CruiseDao.maxPriceForAdmin();
+            }
         }else{
             max_priceNumber = new BigDecimal(request.getParameter("max_price"));
         }
@@ -55,13 +65,27 @@ public class CruisesFilterServlet extends HttpServlet {
         }
 
         if(Objects.equals(date, "")){
-            dateFrom = new Date(-1900,1,1);
-            cruises = cruiseDao.getCruisesByFilters(min_priceNumber,
-                    max_priceNumber,dateFrom, durationDB);
+            if(Objects.equals(page, "index.jsp")){
+                dateFrom = new Date(-1900,1,1);
+                cruises = cruiseDao.getCruisesByFilters(min_priceNumber,
+                        max_priceNumber,dateFrom, durationDB);
+            }
+            else{
+                dateFrom = new Date(-1900,1,1);
+                cruises = cruiseDao.getCruisesByFiltersForAdmin(min_priceNumber,
+                        max_priceNumber,dateFrom, durationDB);
+            }
         }else{
-            dateFrom = Date.valueOf(date);
-            cruises = cruiseDao.getCruisesByFilters(min_priceNumber,
-                    max_priceNumber,dateFrom, durationDB);
+            if(Objects.equals(page, "index.jsp")) {
+                dateFrom = Date.valueOf(date);
+                cruises = cruiseDao.getCruisesByFilters(min_priceNumber,
+                        max_priceNumber, dateFrom, durationDB);
+            }
+            else{
+                dateFrom = Date.valueOf(date);
+                cruises = cruiseDao.getCruisesByFiltersForAdmin(min_priceNumber,
+                        max_priceNumber, dateFrom, durationDB);
+            }
         }
         session.setAttribute("filtered_cruises", cruises);
 

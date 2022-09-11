@@ -125,9 +125,6 @@
             <% if(o.getStatusId() == CruiseStatusEnum.IN_PROGRESS){ %>
             <td><a class="btn btn-sm btn-success" href="AcceptOrder?id=<%=o.getOrderId()%>"><fmt:message key="lable.acceptrequest"/></a></td>
             <td><a class="btn btn-sm btn-danger" href="CancelOrder?money=<%=o.getPaymentAmount()%>&userId=<%=o.getU_id() %>&id=<%=o.getOrderId()%>&quantity=<%=o.getQuantity()%>&cruiseId=<%=o.getId()%>"><fmt:message key="lable.deleteorder"/></a></td>
-            <%} else if(o.getStatusId() == CruiseStatusEnum.DELETED_BY_ADMIN){ %>
-            <td><fmt:message key="lable.notallowed"/></td>
-            <td><a class="btn btn-sm btn-danger" href="CancelOrder?money=<%=o.getPaymentAmount()%>&userId=<%=o.getU_id() %>&id=<%=o.getOrderId()%>&quantity=<%=o.getQuantity()%>&cruiseId=<%=o.getId()%>"><fmt:message key="lable.deleteorder"/></a></td>
             <%}
             else{%>
             <td><fmt:message key="lable.notallowed"/></td>

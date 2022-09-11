@@ -47,11 +47,14 @@ public class UserOrdersDao {
         return i;
     }
 
-    public List<UserOrders> userOrders(int id) {
+    public List<UserOrders> userOrderPagination(int id,int currentPage, int recordsPerPage) {
         List<UserOrders> list = new ArrayList<>();
+        int start = currentPage * recordsPerPage - recordsPerPage;
         try(Connection con = cm.getConnection();
-            PreparedStatement pst = con.prepareStatement("select * from orders where user_id=? order by orders.statusId")) {
+            PreparedStatement pst = con.prepareStatement("select * from orders where user_id=? order by orders.statusId LIMIT ?,?")) {
             pst.setInt(1, id);
+            pst.setInt(2, start);
+            pst.setInt(3, recordsPerPage);
             try(ResultSet rs = pst.executeQuery()) {
                 while (rs.next()) {
                     UserOrders order = new UserOrders();
@@ -70,6 +73,22 @@ public class UserOrdersDao {
         return list;
     }
 
+    public Integer getNumberOfRows(int id) {
+        int number = 0;
+        try(Connection con = cm.getConnection();
+            PreparedStatement preparedStatement = con.prepareStatement("SELECT COUNT(user_id) FROM orders WHERE user_id = ?")) {
+            preparedStatement.setInt(1,id);
+            preparedStatement.execute();
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                number = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return number;
+    }
+
     private void StatusCheck(List<UserOrders> list, UserOrders order, ResultSet rs) throws SQLException {
         if(rs.getInt("statusId") == 1){
             order.setStatusId(CruiseStatusEnum.IN_PROGRESS);
@@ -79,9 +98,6 @@ public class UserOrdersDao {
         }
         else if(rs.getInt("statusId") == 3){
             order.setStatusId(CruiseStatusEnum.CANCELED);
-        }
-        else if(rs.getInt("statusId") == 5){
-            order.setStatusId(CruiseStatusEnum.DELETED_BY_ADMIN);
         }
         list.add(order);
     }
@@ -168,17 +184,6 @@ public class UserOrdersDao {
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
-        }
-    }
-
-    public static void updateDeletedStatusOrders(int id) {
-        try(Connection con = cm.getConnection();
-            PreparedStatement pst = con.prepareStatement("UPDATE orders SET statusId = ? where cruise_id = ?")) {
-            pst.setInt(1, CruiseStatusEnum.DELETED_BY_ADMIN.ordinal());
-            pst.setInt(2, id);
-            pst.execute();
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 

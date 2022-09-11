@@ -69,7 +69,7 @@ if(session.getAttribute("language") != null){%>
             </ul>
             <ul class="navbar-nav  mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="orders.jsp"><fmt:message key="lable.orders"/></a>
+                    <a class="nav-link active" aria-current="page" href="OrdersPaginationServlet?records=5&page=1"><fmt:message key="lable.orders"/></a>
                 </li>
             </ul>
             <ul class="navbar-nav  mb-lg-0">

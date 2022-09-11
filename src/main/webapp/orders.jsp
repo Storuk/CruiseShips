@@ -13,14 +13,6 @@
   DecimalFormat dcf = new DecimalFormat("#.##");
   request.setAttribute("dcf", dcf);
   User user = (User) request.getSession().getAttribute("user");
-  List<UserOrders> orders = null;
-  if (user != null) {
-    UserOrdersDao orderDao  = new UserOrdersDao();
-    orders = orderDao.userOrders(user.getId());
-  }
-  else{
-    response.sendRedirect("login.jsp");
-  }
   ArrayList<Cart> cart_list = (ArrayList<Cart>) session.getAttribute("cart-list");
   if (cart_list != null) {
     request.setAttribute("cart_list", cart_list);
@@ -84,7 +76,7 @@
       </ul>
       <ul class="navbar-nav  mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="orders.jsp"><fmt:message key="lable.orders"/></a>
+          <a class="nav-link active" aria-current="page" href="OrdersPaginationServlet?records=5&page=1"><fmt:message key="lable.orders"/></a>
         </li>
       </ul>
       <ul class="navbar-nav  mb-lg-0">
@@ -126,28 +118,67 @@
     </tr>
     </thead>
     <tbody>
-
-
-    <%
-      if(orders != null){
-        for(UserOrders o:orders){%>
-    <tr>
-      <td><%=o.getOrderId()%></td>
-      <td><%=o.getDate() %></td>
-      <td><%=o.getCruise_name() %></td>
-      <td><%=o.getQuantity() %></td>
-      <td><%=dcf.format(o.getPaymentAmount()) %>$</td>
-      <td><%=o.getStatusId() %></td>
-      <% if(o.getStatusId() == CruiseStatusEnum.IN_PROGRESS || o.getStatusId() == CruiseStatusEnum.DELETED_BY_ADMIN){ %>
-      <td><a class="btn btn-sm btn-danger" href="DeleteOrder?money=<%=o.getPaymentAmount()%>&userId=<%=user.getId()%>&id=<%=o.getOrderId()%>&quantity=<%=o.getQuantity()%>&cruiseId=<%=o.getId()%>"><fmt:message key="lable.deleteorder"/></a></td>
-      <%} else{ %>
-      <td><fmt:message key="lable.notallowed"/></td>
-      <%} %>
-    </tr>
-    <%}
-    }%>
+    <c:forEach var="list" items="${sessionScope.paymentList}">
+      <tr>
+        <td><c:out value="${list.getOrderId()}"/></td>
+        <td><c:out value="${list.getDate()}"/></td>
+        <td><c:out value="${list.getCruise_name()}"/> </td>
+        <td><c:out value="${list.getQuantity()}"/> </td>
+        <td><c:out value="${dcf.format(list.getPaymentAmount())}"/> </td>
+        <td><c:out value="${list.getStatusId()}"/></td>
+        <c:choose >
+          <c:when test="${list.getStatusId() eq CruiseStatusEnum.IN_PROGRESS}">
+            <td><a class="btn btn-sm btn-danger" href="DeleteOrder?money=${list.getPaymentAmount()}&userId=<%=user.getId()%>&id=${list.getOrderId()}&quantity=${list.getQuantity()}&cruiseId=${list.getId()}"><fmt:message key="lable.deleteorder"/></a></td>
+          </c:when>
+          <c:otherwise>
+            <td><fmt:message key="lable.notallowed"/></td>
+          </c:otherwise>
+        </c:choose>
+      </tr>
+    </c:forEach>
     </tbody>
-  </table>
+</table>
+   <nav aria-label="Navigation" class="nav justify-content-center">
+     <ul class="pagination">
+       <c:if test="${sessionScope.currentPage != 1}">
+         <li class="page-item"><a class="page-link"
+                                  href="OrdersPaginationServlet?records=${sessionScope.recordsPerPage}&page=${sessionScope.currentPage-1}">Previous</a>
+         </li>
+       </c:if>
+       <c:if test="${sessionScope.currentPage == 1}">
+         <li class="page-item disabled">
+           <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+         </li>
+       </c:if>
+
+       <c:forEach begin="1" end="${sessionScope.noOfPages}" var="i">
+         <c:choose>
+           <c:when test="${sessionScope.currentPage eq i}">
+             <li class="page-item active"><a class="page-link">
+                 ${i}<span class="sr-only"></span></a>
+             </li>
+           </c:when>
+           <c:otherwise>
+             <li class="page-item"><a class="page-link"
+                                      href="OrdersPaginationServlet?records=${sessionScope.recordsPerPage}&page=${i}">${i}</a>
+             </li>
+           </c:otherwise>
+         </c:choose>
+       </c:forEach>
+
+       <c:if test="${sessionScope.currentPage lt sessionScope.noOfPages}">
+         <li class="page-item"><a class="page-link"
+                                  href="OrdersPaginationServlet?records=${sessionScope.recordsPerPage}&page=${sessionScope.currentPage+1}">Next</a>
+         </li>
+       </c:if>
+       <c:if test="${sessionScope.currentPage ge sessionScope.noOfPages}">
+         <li class="page-item disabled">
+           <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
+         </li>
+       </c:if>
+     </ul>
+   </nav>
 </div>
+
 </body>
 </html>

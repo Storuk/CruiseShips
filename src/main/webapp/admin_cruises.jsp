@@ -9,7 +9,7 @@
 <%
     CruiseDao.updateStatusCompleted();
     CruiseDao cr = new CruiseDao();
-    List<Cruise> cruises = cr.getAllCruises();
+    List<Cruise> cruises = cr.getAllCruisesForAdmin();
 
     if(session.getAttribute("filtered_cruises") != null){
         cruises = (List<Cruise>) session.getAttribute("filtered_cruises");
@@ -104,13 +104,13 @@
         <div class="d-flex flex-row align-items-center mb-4">
             <div class="form-outline flex-fill mb-0">
                 <label class="form-label"  for="form3Example2c" style="color: white"><fmt:message key="lable.price_from"/></label>
-                <input type="number" min="<%=CruiseDao.minPrice()%>" max="<%=CruiseDao.maxPrice()%>" name = "min_price" placeholder="<fmt:message key="lable.price_from"/>" id="form3Example2c" class="form-control" />
+                <input type="number" min="<%=CruiseDao.minPriceForAdmin()%>" max="<%=CruiseDao.maxPriceForAdmin()%>" name = "min_price" placeholder="<fmt:message key="lable.price_from"/>" id="form3Example2c" class="form-control" />
             </div>
         </div>
         <div class="d-flex flex-row align-items-center mb-4">
             <div class="form-outline flex-fill mb-0">
                 <label class="form-label"  for="form3Example3c" style="color: white"><fmt:message key="lable.price_to"/></label>
-                <input type="number" min="<%=CruiseDao.minPrice()%>" max="<%=CruiseDao.maxPrice()%>" name = "max_price" placeholder="<fmt:message key="lable.price_to"/>" id="form3Example3c" class="form-control" />
+                <input type="number" min="<%=CruiseDao.minPriceForAdmin()%>" max="<%=CruiseDao.maxPriceForAdmin()%>" name = "max_price" placeholder="<fmt:message key="lable.price_to"/>" id="form3Example3c" class="form-control" />
             </div>
         </div>
         <div class="d-flex flex-row align-items-center mb-4">
@@ -129,14 +129,15 @@
                 for (Cruise c:cruises){
         %>
             <div class="col-md-4 my-3" style="padding-bottom: 2rem;">
-                <div class="card" style="width: 19rem; height: 26rem; margin: auto" >
-                    <img class="card-img-top" src="cruises_images/<%= c.getImage()%>" style="width: auto; height: 200px" alt="Card image cap">
+                <div class="card" style="width: 19rem; height: 27rem; margin: auto" >
+                    <img class="card-img-top" src="cruises_images/<%= c.getImage()%>" style="width: auto; height: 163px" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title"><fmt:message key="lable.cruisename"/>: <%= c.getCruise_name()%></h5>
                         <h6 class="card-title"><fmt:message key="lable.route"/>: <%= c.getRoute()%> </h6>
                         <h6 class="card-title"><fmt:message key="lable.passagercapacity"/>: <%= c.getPassenger_capacity()%> </h6>
                         <h6 class="card-title"><fmt:message key="lable.placesleft"/>: <%= c.getPlaces()%> </h6>
                         <h6 class="card-title"><fmt:message key="lable.price"/>: <%= c.getPrice()%>$ </h6>
+                        <h6 class="card-title"><fmt:message key="lable.status"/>: <%= c.getStatuse()%> </h6>
                         <h6 class="card-title"><fmt:message key="lable.dates"/>: (<%=c.getStart_cruise_date()%>)-(<%=c.getEnd_cruise_date()%>) </h6>
                         <a href="DeleteCruiseServlet?id=<%= c.getId()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"> <fmt:message key="lable.deletecruise"/></a>
                         <a href="UpdateCruiseServlet?id=<%= c.getId()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="lable.updatecruise"/></a>

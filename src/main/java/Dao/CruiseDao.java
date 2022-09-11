@@ -45,6 +45,74 @@ public class CruiseDao {
         return cruises;
     }
 
+    public static BigDecimal maxPrice() {
+        BigDecimal max = new BigDecimal(0);
+        try(Connection con = cm.getConnection();
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT price FROM cruise where statuse = 0")){
+            if(rs.next()){
+                max = rs.getBigDecimal(1);
+            }
+            while(rs.next()){
+                if(max.compareTo(rs.getBigDecimal(1)) < 0){
+                    max = rs.getBigDecimal(1);
+                }
+            }
+            return max;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static BigDecimal minPrice() {
+        BigDecimal min = new BigDecimal(0);
+        try(Connection con = cm.getConnection();
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT price FROM cruise where statuse = 0")){
+            if(rs.next()){
+                min = rs.getBigDecimal(1);
+            }
+            while(rs.next()){
+                if(min.compareTo(rs.getBigDecimal(1)) > 0){
+                    min = rs.getBigDecimal(1);
+                }
+            }
+            return min;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Cruise> getAllCruisesForAdmin(){
+        List<Cruise> cruises = new ArrayList<Cruise>();
+        try(Connection con = cm.getConnection();
+            PreparedStatement pst = con.prepareStatement("select * from cruise")) {
+            SelectCruise(cruises, pst);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return cruises;
+    }
+
+    public List<Cruise> getCruisesByFiltersForAdmin(BigDecimal min_price, BigDecimal max_price, Date date, int duration){
+        List<Cruise> cruises = new ArrayList<Cruise>();
+
+        try(Connection con = cm.getConnection();
+            PreparedStatement pst = con.prepareStatement("select * from cruise WHERE price BETWEEN ? AND ? AND start_cruise >= ? AND duration >= ?")) {
+            pst.setBigDecimal(1,min_price);
+            pst.setBigDecimal(2,max_price);
+            pst.setDate(3,date);
+            pst.setInt(4,duration);
+            SelectCruise(cruises, pst);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return cruises;
+    }
+
     private void SelectCruise(List<Cruise> cruises, PreparedStatement pst) throws SQLException, ClassNotFoundException {
         ResultSet rs =  pst.executeQuery();
         while (rs.next()){
@@ -63,6 +131,12 @@ public class CruiseDao {
             cruise.setPlaces(rs.getInt("places"));
             cruise.setImage(rs.getString("image"));
             cruise.setDuration(rs.getInt("duration"));
+            if(rs.getInt("statuse") == 0){
+                cruise.setStatuse(CruiseStatusEnum.IN_PROGRESS);
+            }
+            if(rs.getInt("statuse") == 4){
+                cruise.setStatuse(CruiseStatusEnum.COMPLETED);
+            }
             cruises.add(cruise);
         }
     }
@@ -173,21 +247,6 @@ public class CruiseDao {
         }
     }
 
-
-    public List<Cruise> getOrderedCruises(){
-        List<Cruise> cruises = new ArrayList<Cruise>();
-
-        try(Connection con = cm.getConnection();
-            PreparedStatement pst = con.prepareStatement("select * from cruise where status = ?")) {
-            pst.setInt(1, CruiseStatusEnum.COMPLETED.ordinal());
-            SelectCruise(cruises, pst);
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-        return cruises;
-    }
-
     public static boolean cruiseNameCheck(String cruise_name) throws ClassNotFoundException {
         boolean status = false;
 
@@ -202,7 +261,6 @@ public class CruiseDao {
 
         }
         catch (SQLException e) {
-            // process sql exception
             e.printStackTrace();
         }
         return status;
@@ -244,11 +302,13 @@ public class CruiseDao {
         return row;
     }
 
-    public static BigDecimal maxPrice() {
+
+
+    public static BigDecimal maxPriceForAdmin() {
         BigDecimal max = new BigDecimal(0);
         try(Connection con = cm.getConnection();
             Statement statement = con.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT price FROM cruise where statuse = 0")){
+            ResultSet rs = statement.executeQuery("SELECT price FROM cruise")){
             if(rs.next()){
                 max = rs.getBigDecimal(1);
             }
@@ -263,11 +323,11 @@ public class CruiseDao {
         }
     }
 
-    public static BigDecimal minPrice() {
+    public static BigDecimal minPriceForAdmin() {
         BigDecimal min = new BigDecimal(0);
         try(Connection con = cm.getConnection();
             Statement statement = con.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT price FROM cruise where statuse = 0")){
+            ResultSet rs = statement.executeQuery("SELECT price FROM cruise")){
             if(rs.next()){
                 min = rs.getBigDecimal(1);
             }

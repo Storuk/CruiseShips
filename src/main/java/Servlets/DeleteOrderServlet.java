@@ -38,7 +38,7 @@ public class DeleteOrderServlet extends HttpServlet {
                 request.getSession().setAttribute("user", update);
                 logger.info("Order Deleted");
             }
-            response.sendRedirect("orders.jsp");
+            response.sendRedirect("OrdersPaginationServlet?records=5&page=1");
         } catch (ClassNotFoundException | SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

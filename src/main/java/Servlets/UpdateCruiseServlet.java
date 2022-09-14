@@ -4,7 +4,6 @@ import Dao.CruiseDao;
 import Dao.ShipsDao;
 import Dao.UserOrdersDao;
 import Entities.Cruise;
-import Entities.DateUtil;
 import Entities.Ships;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,19 +11,9 @@ import org.slf4j.LoggerFactory;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.sql.Date;
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Objects;
-import java.util.TimeZone;
-
-import static controller.security.PasswordEncrypt.ConvertImage;
 
 @WebServlet(name = "UpdateCruiseServlet", value = "/UpdateCruiseServlet")
 public class UpdateCruiseServlet extends HttpServlet {

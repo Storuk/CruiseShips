@@ -15,6 +15,7 @@ import static controller.security.PasswordEncrypt.hashPassword;
 @WebServlet(name = "UserLoginServlet", value = "/login")
 public class UserLoginServlet extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(UserLoginServlet.class);
+    UserDao userDao = new UserDao();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
@@ -27,7 +28,7 @@ public class UserLoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         HttpSession session = request.getSession();
         try {
-                User user = UserDao.validate(username, hashPassword(password));
+                User user = userDao.validate(username, hashPassword(password));
                 if (user != null) {
                     logger.info("User_Login_successfully");
                     session.setAttribute("User",username);

@@ -47,7 +47,7 @@ public class UserRegisterServlet extends HttpServlet {
 
         if(password.length() < 8){
             request.setAttribute("status", "invalid_password_type");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/userregister.jsp");
             dispatcher.forward(request, response);
         }
 
@@ -78,7 +78,7 @@ public class UserRegisterServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/userregister.jsp");
-        dispatcher.forward(request, response);
+        //RequestDispatcher dispatcher = request.getRequestDispatcher("/userregister.jsp");
+        //dispatcher.forward(request, response);
     }
 }

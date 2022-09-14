@@ -91,10 +91,7 @@
 <link rel="stylesheet" href="alert/dist/sweetalert.css">
 <script type="text/javascript">
     var status = document.getElementById("status").value;
-    if(status == "invalid_balance_format"){
-        swal("Something went wrong", "Invalid balance format", "error");
-    }
-    else if(status == "invalid_card_format"){
+    if(status == "invalid_card_format"){
         swal("Something went wrong", "Invalid card format", "error");
     }
 </script>

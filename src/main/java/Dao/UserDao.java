@@ -17,7 +17,6 @@ public class UserDao {
             pst.setString(1, username);
             pst.setString(2, password);
 
-            System.out.println(pst);
             ResultSet rs = pst.executeQuery();
             if(rs.next()) {
                 user = new User();
@@ -63,8 +62,7 @@ public class UserDao {
         return "Invalid user credentials";
     }
 
-    public static int registerUser(User user) throws ClassNotFoundException {
-        int result = 0;
+    public static void registerUser(User user) throws ClassNotFoundException {
         try(Connection con = cm.getConnection();
             PreparedStatement preparedStatement = con.prepareStatement("INSERT INTO users ( uname, ufirstname, ulastname, uemail, upassword, uscore, roles) VALUES  ( ?, ?, ?, ?, ?, ?, ?)"))
         {
@@ -75,27 +73,23 @@ public class UserDao {
             preparedStatement.setString(5,user.getPassword());
             preparedStatement.setBigDecimal(6,user.getScore());
             preparedStatement.setInt(7,user.getRole().ordinal());
-            System.out.println(preparedStatement);
-            result = preparedStatement.executeUpdate();
+            preparedStatement.executeUpdate();
         }
         catch (SQLException e){
             e.printStackTrace();
         }
-        return result;
     }
 
-    public static int AddMoney(int id, BigDecimal new_balance) throws ClassNotFoundException, SQLException {
-        int i = 0;
-        System.out.println(new_balance);
+    public static void AddMoney(int id, BigDecimal new_balance) throws ClassNotFoundException, SQLException {
+
         try(Connection con = cm.getConnection();
             PreparedStatement pst = con.prepareStatement("UPDATE users SET uscore = uscore + ? where id = ?")){
             pst.setBigDecimal(1, new_balance);
             pst.setInt(2, id);
-            i = pst.executeUpdate();
+            pst.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return i;
     }
 
     public static boolean check(User user) throws ClassNotFoundException {
@@ -112,10 +106,8 @@ public class UserDao {
 
         }
         catch (SQLException e) {
-            // process sql exception
             e.printStackTrace();
         }
         return status;
     }
-
 }

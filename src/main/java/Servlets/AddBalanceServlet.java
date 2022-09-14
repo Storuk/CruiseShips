@@ -33,7 +33,6 @@ public class AddBalanceServlet extends HttpServlet {
             String username = String.valueOf(user.getUsername());
             String password = String.valueOf(user.getPassword());
             String new_balance = request.getParameter("balance");
-            System.out.println(new_balance);
             String card_number = request.getParameter("card_number");
             if(card_number.length()<16){
                 request.setAttribute("status", "invalid_card_format");
@@ -41,21 +40,16 @@ public class AddBalanceServlet extends HttpServlet {
                 requestDispatcher.forward(request,response);
             }
             else {
-                try {
-                    UserDao.AddMoney(Integer.parseInt(id), new BigDecimal(new_balance));
-                    User update = UserDao.validate(username, password);
-                    request.getSession().setAttribute("user", update);
-                    logger.info("Balance added");
-                } catch (ClassNotFoundException e) {
-                    request.setAttribute("status", "invalid_balance_format");
-                    logger.info("Invalid input type for balance");
-                    throw new RuntimeException(e);
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
+                UserDao.AddMoney(Integer.parseInt(id), new BigDecimal(new_balance));
+                User update = UserDao.validate(username, password);
+                request.getSession().setAttribute("user", update);
+                logger.info("Balance added");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/user_profile.jsp");
+                requestDispatcher.forward(request,response);
             }
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/user_profile.jsp");
-            requestDispatcher.forward(request,response);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

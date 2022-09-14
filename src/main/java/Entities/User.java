@@ -78,4 +78,32 @@ public class User {
     public void setId(int id) {
         Id = id;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (Id != user.Id) return false;
+        if (!username.equals(user.username)) return false;
+        if (!firstName.equals(user.firstName)) return false;
+        if (!lastName.equals(user.lastName)) return false;
+        if (!email.equals(user.email)) return false;
+        if (!password.equals(user.password)) return false;
+        return role == user.role;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Id;
+        result = 31 * result + username.hashCode();
+        result = 31 * result + firstName.hashCode();
+        result = 31 * result + lastName.hashCode();
+        result = 31 * result + email.hashCode();
+        result = 31 * result + password.hashCode();
+        result = 31 * result + role.hashCode();
+        return result;
+    }
 }

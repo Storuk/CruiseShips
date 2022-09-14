@@ -13,7 +13,6 @@ public class CartDao {
 
     public List<Cart> getCartProducts(ArrayList<Cart> cartList) {
         List<Cart> cruises = new ArrayList<>();
-
        try{
             if (cartList.size() > 0) {
                 for (Cart item : cartList) {

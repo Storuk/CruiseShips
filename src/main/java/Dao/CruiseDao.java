@@ -189,12 +189,14 @@ public class CruiseDao {
         Cruise cruise = null;
 
         try(Connection con = cm.getConnection();
-            PreparedStatement pst = con.prepareStatement("select * from cruise where (? < start_cruise and start_cruise < ? or ? < end_cruise and end_cruise < ?) and ship_id = ?")) {
+            PreparedStatement pst = con.prepareStatement("select * from cruise where (? < start_cruise and start_cruise < ? or ? < end_cruise and end_cruise < ? or start_cruise < ? < end_cruise or start_cruise < ? < end_cruise) and ship_id = ?")) {
             pst.setDate(1, start_date_cruise);
             pst.setDate(2, end_date_cruise);
             pst.setDate(3, start_date_cruise);
             pst.setDate(4, end_date_cruise);
-            pst.setInt(5, ship_id);
+            pst.setDate(5, start_date_cruise);
+            pst.setDate(6, end_date_cruise);
+            pst.setInt(7, ship_id);
             try(ResultSet rs = pst.executeQuery()) {
                 if (rs.next()) {
                     cruise = new Cruise();

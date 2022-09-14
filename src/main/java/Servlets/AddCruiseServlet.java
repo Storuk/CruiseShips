@@ -70,8 +70,11 @@ public class AddCruiseServlet extends HttpServlet {
 
         try {
             if (!CruiseDao.cruiseNameCheck(cruise_name)) {
+
+
                 Cruise valid = CruiseDao.date_validation(start_cruise_date, end_cruise_date, Integer.parseInt(ship_id));
                 if (valid == null) {
+
                     if (Objects.equals(fileName, ".jpg") || Objects.equals(fileName, ".png") || Objects.equals(fileName, ".svg")) {
                         FileOutputStream fos = new FileOutputStream("C:\\Users\\Влад\\IdeaProjects\\final_project2\\src\\main\\webapp\\cruises_images\\" + full_filename);
                         InputStream is = file.getInputStream();
@@ -90,6 +93,7 @@ public class AddCruiseServlet extends HttpServlet {
                         RequestDispatcher dispatcher = request.getRequestDispatcher("/add_cruise.jsp");
                         dispatcher.forward(request, response);
                     }
+
                 } else {
                     request.setAttribute("dates", "(" + valid.getStart_cruise_date() + ") - (" + valid.getEnd_cruise_date() + ")");
                     request.setAttribute("status", "Invalid_dates");
@@ -97,6 +101,7 @@ public class AddCruiseServlet extends HttpServlet {
                     dispatcher.forward(request, response);
                 }
             }
+
             else{
                 request.setAttribute("status", "Cruise_name_exist");
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/add_cruise.jsp");

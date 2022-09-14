@@ -131,7 +131,7 @@ public class OrderServlet extends HttpServlet {
                         }
                         logger.info("Cruise_bought");
                         session.removeAttribute("Cruise_price");
-                        response.sendRedirect("orders.jsp");
+                        response.sendRedirect("OrdersPaginationServlet?records=5&page=1");
                     } else {
                         out.println("order failed");
                     }

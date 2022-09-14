@@ -28,14 +28,15 @@ public class RemoveFromCartServlet extends HttpServlet {
                             break;
                         }
                     }
-
                 }
-                logger.info("Cruise_removed_from_cart");
                 response.sendRedirect("cart.jsp");
 
             } else {
                 response.sendRedirect("cart.jsp");
             }
+
+        }catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

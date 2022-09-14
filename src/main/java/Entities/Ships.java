@@ -1,5 +1,7 @@
 package Entities;
 
+import java.util.Objects;
+
 public class Ships {
     private int id;
     private String ship_name;
@@ -64,19 +66,17 @@ public class Ships {
 
         Ships ships = (Ships) o;
 
-        if (id != ships.id) return false;
         if (passenger_capacity != ships.passenger_capacity) return false;
         if (ports_number != ships.ports_number) return false;
-        if (!ship_name.equals(ships.ship_name)) return false;
-        return route.equals(ships.route);
+        if (ship_name != null ? !ship_name.equals(ships.ship_name) : ships.ship_name != null) return false;
+        return route != null ? route.equals(ships.route) : ships.route == null;
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + ship_name.hashCode();
+        int result = ship_name != null ? ship_name.hashCode() : 0;
         result = 31 * result + passenger_capacity;
-        result = 31 * result + route.hashCode();
+        result = 31 * result + (route != null ? route.hashCode() : 0);
         result = 31 * result + ports_number;
         return result;
     }

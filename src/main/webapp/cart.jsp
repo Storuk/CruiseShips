@@ -164,10 +164,8 @@
       </td>
       <td><a class="btn btn-sm btn-danger" href="RemoveFromCartServlet?id=<%=c.getId()%>"><fmt:message key="lable.remove"/></a></td>
     </tr>
-    <%  }
-      } else{ %>
-
-    <%}%>
+    <%}
+    }%>
     </tbody>
   </table>
 </div>

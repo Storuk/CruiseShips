@@ -56,4 +56,28 @@ public class Ships {
     public void setPorts_number(int ports_number) {
         this.ports_number = ports_number;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Ships ships = (Ships) o;
+
+        if (id != ships.id) return false;
+        if (passenger_capacity != ships.passenger_capacity) return false;
+        if (ports_number != ships.ports_number) return false;
+        if (!ship_name.equals(ships.ship_name)) return false;
+        return route.equals(ships.route);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + ship_name.hashCode();
+        result = 31 * result + passenger_capacity;
+        result = 31 * result + route.hashCode();
+        result = 31 * result + ports_number;
+        return result;
+    }
 }

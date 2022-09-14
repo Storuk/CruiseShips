@@ -17,13 +17,14 @@ public class ShipsDao {
         try(Connection con = cm.getConnection();
             PreparedStatement pst = con.prepareStatement("select * from ships where id = ?")) {
             pst.setInt(1, id);
-            ResultSet rs = pst.executeQuery();
-            if(rs.next()) {
-                ships = new Ships();
-                ships.setShip_name(rs.getString("ship_name"));
-                ships.setPassenger_capacity(rs.getInt("passenger_capacity"));
-                ships.setRoute(rs.getString("route"));
-                ships.setPorts_number(rs.getInt("ports_number"));
+            try(ResultSet rs = pst.executeQuery();) {
+                if (rs.next()) {
+                    ships = new Ships();
+                    ships.setShip_name(rs.getString("ship_name"));
+                    ships.setPassenger_capacity(rs.getInt("passenger_capacity"));
+                    ships.setRoute(rs.getString("route"));
+                    ships.setPorts_number(rs.getInt("ports_number"));
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();

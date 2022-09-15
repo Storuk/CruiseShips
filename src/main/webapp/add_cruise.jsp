@@ -83,7 +83,7 @@
 
                 <div class="ship-name">
                     <label for = "ship_name" id="cs" ><fmt:message key="lable.addCruiseShip"/></label>
-                    <select name = "ship_name" id = "ship_name" value="3">
+                    <select name = "ship_name" id = "ship_name" required="required" value="3">
                         <option value="1">Symphony of the Seas</option>
                         <option value="2">Harmony of the Seas</option>
                         <option value="3">Oasis of the Seas</option>
@@ -92,23 +92,23 @@
                     </select>
                 </div>
 
-                <input placeholder="<fmt:message key="lable.addCruisePrice"/>" min="1" step="any" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" type="number" name="price" id="price">
+                <input placeholder="<fmt:message key="lable.addCruisePrice"/>" min="1" step="any" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" type="number" name="price" required="required" id="price">
 
             </div>
 
             <div class = "flex-column">
 
-                <input placeholder="<fmt:message key="lable.addCruiseDuration"/>" min="1" type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" name="duration" id="duration">
+                <input placeholder="<fmt:message key="lable.addCruiseDuration"/>" min="1" type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" name="duration" required="required" id="duration">
 
                 <div class="date-picker">
                     <div>
                         <label for="start_cruise_date"><fmt:message key="lable.addCruiseStartDate"/></label>
-                        <input placeholder="Start Cruise Date" type="date" name="start_cruise_date" id="start_cruise_date">
+                        <input placeholder="Start Cruise Date" type="date" name="start_cruise_date" required="required" id="start_cruise_date">
                     </div>
 
                     <div>
                         <label for="end_cruise_date"><fmt:message key="lable.addCruiseEndDate"/></label>
-                        <input placeholder="End Cruise Date" type="date" name="end_cruise_date" id="end_cruise_date">
+                        <input placeholder="End Cruise Date" type="date" name="end_cruise_date" required="required" id="end_cruise_date">
                     </div>
 
                 </div>

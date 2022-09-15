@@ -69,49 +69,45 @@ public class AddCruiseServlet extends HttpServlet {
         cruise.setImage(full_filename);
 
         try {
-            if (!CruiseDao.cruiseNameCheck(cruise_name)) {
-
-
-                Cruise valid = CruiseDao.date_validation(start_cruise_date, end_cruise_date, Integer.parseInt(ship_id));
-                if (valid == null) {
-
-                    if (Objects.equals(fileName, ".jpg") || Objects.equals(fileName, ".png") || Objects.equals(fileName, ".svg")) {
-                        FileOutputStream fos = new FileOutputStream("C:\\Users\\Влад\\IdeaProjects\\final_project2\\src\\main\\webapp\\cruises_images\\" + full_filename);
-                        InputStream is = file.getInputStream();
-                        byte[] data = new byte[is.available()];
-                        is.read(data);
-                        fos.write(data);
-                        fos.close();
-
-                        CruiseDao.addCruise(cruise);
-
-                        request.setAttribute("status", "Uploaded");
-                        RequestDispatcher dispatcher = request.getRequestDispatcher("/add_cruise.jsp");
-                        dispatcher.forward(request, response);
-                        logger.info("cruise added");
-                    } else {
-                        request.setAttribute("status", "Invalid_photo_type");
-                        RequestDispatcher dispatcher = request.getRequestDispatcher("/add_cruise.jsp");
-                        dispatcher.forward(request, response);
-                    }
-
-                } else {
-                    request.setAttribute("dates", "(" + valid.getStart_cruise_date() + ") - (" + valid.getEnd_cruise_date() + ")");
-                    request.setAttribute("status", "Invalid_dates");
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/add_cruise.jsp");
-                    dispatcher.forward(request, response);
-                }
-            }
-
-            else{
+            Cruise valid = CruiseDao.date_validation(start_cruise_date, end_cruise_date, Integer.parseInt(ship_id));
+            if (CruiseDao.cruiseNameCheck(cruise_name)) {
                 request.setAttribute("status", "Cruise_name_exist");
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/add_cruise.jsp");
                 dispatcher.forward(request, response);
             }
+
+            else if (valid != null) {
+                request.setAttribute("dates", "(" + valid.getStart_cruise_date() + ") - (" + valid.getEnd_cruise_date() + ")");
+                request.setAttribute("status", "Invalid_dates");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/add_cruise.jsp");
+                dispatcher.forward(request, response);
+            }
+
+            else if (!Objects.equals(fileName, ".jpg") || !Objects.equals(fileName, ".png") || !Objects.equals(fileName, ".svg")) {
+                request.setAttribute("status", "Invalid_photo_type");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/add_cruise.jsp");
+                dispatcher.forward(request, response);
+            }
+
+            else {
+                FileOutputStream fos = new FileOutputStream("C:\\Users\\Влад\\IdeaProjects\\final_project2\\src\\main\\webapp\\cruises_images\\" + full_filename);
+                InputStream is = file.getInputStream();
+                byte[] data = new byte[is.available()];
+                is.read(data);
+                fos.write(data);
+                fos.close();
+
+                CruiseDao.addCruise(cruise);
+                request.setAttribute("status", "Uploaded");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/add_cruise.jsp");
+                dispatcher.forward(request, response);
+                logger.info("cruise added");
+            }
         }
-        catch (ClassNotFoundException e) {
+        catch (Exception e) {
             throw new RuntimeException(e);
         }
+
     }
 }
 

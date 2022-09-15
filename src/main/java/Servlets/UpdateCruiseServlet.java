@@ -41,7 +41,7 @@ public class UpdateCruiseServlet extends HttpServlet {
                 Date end_cruise_date = Date.valueOf(request.getParameter("end_cruise_date"));
                 String cruise_name = request.getParameter("cruise_name");
                 String duration = request.getParameter("duration");
-                String ship_id = request.getParameter("ship_name");
+                String ship_id = request.getParameter("ship_id");
                 int id = Integer.parseInt(request.getParameter("cruiseId"));
 
                 java.util.Date utilPackageDate = new java.util.Date();

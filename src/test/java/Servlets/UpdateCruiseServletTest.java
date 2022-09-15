@@ -33,6 +33,8 @@ class UpdateCruiseServletTest {
 
     @Test
     void doPost() throws ServletException, IOException {
+        java.util.Date utilPackageDate = new java.util.Date();
+        java.sql.Date date = new java.sql.Date(utilPackageDate.getTime());
         String price = "250";
         Date start_cruise_date = Date.valueOf("2022-09-20");
         Date end_cruise_date = Date.valueOf("2022-09-29");
@@ -45,8 +47,15 @@ class UpdateCruiseServletTest {
         when(request.getParameter("end_cruise_date")).thenReturn(String.valueOf(end_cruise_date));
         when(request.getParameter("cruise_name")).thenReturn(cruise_name);
         when(request.getParameter("duration")).thenReturn(duration);
-        when(request.getParameter("ship_name")).thenReturn(ship_id);
+        when(request.getParameter("ship_id")).thenReturn(ship_id);
         when(request.getParameter("cruiseId")).thenReturn(cruiseId);
+        if (date.compareTo(start_cruise_date) >= 0 && date.compareTo(end_cruise_date) <= 0) {
+            RequestDispatcher requestDispatcher = mock(RequestDispatcher.class);
+            when(request.getRequestDispatcher("/admin_cruises.jsp")).thenReturn(requestDispatcher);
+            UpdateCruiseServlet updateCruiseServlet = new UpdateCruiseServlet();
+            updateCruiseServlet.doPost(request,response);
+            verify(requestDispatcher).forward(request,response);
+        }
         UpdateCruiseServlet updateCruiseServlet = new UpdateCruiseServlet();
         updateCruiseServlet.doPost(request,response);
         verify(response).sendRedirect("admin_cruises.jsp");

@@ -60,7 +60,7 @@ response.sendRedirect("admin_cruises.jsp");
                                             <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
                                                 <label class="form-label"  for="form3Example6c"><fmt:message key="lable.updateCruiseShip"/>:</label>
-                                                <input type="text" name = "ship_name"  value="<%=cruise.getShip_id()%>" required = "required" placeholder="Password" id="form3Example6c" class="form-control" />
+                                                <input type="number" name = "ship_id" oninput="this.value = this.value.replace(/[^1-5.]/g, '').replace(/(\..*)\./g, '$1');" value="<%=cruise.getShip_id()%>" required = "required" placeholder="Password" id="form3Example6c" class="form-control" />
                                             </div>
                                         </div>
                                         <div class="d-flex flex-row align-items-center mb-4">

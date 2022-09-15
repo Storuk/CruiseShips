@@ -1,330 +1,73 @@
-[INFO ] 2022-09-14 15:06:03.426 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 15:06:03.805 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3e36b7a0
-[INFO ] 2022-09-14 15:06:03.807 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 15:06:03.877 [main] UserLoginServlet - User_Login_successfully
-[INFO ] 2022-09-14 15:06:03.890 [main] UserLoginServlet - Move to payments
-[INFO ] 2022-09-14 15:21:19.097 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 15:21:19.389 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7e307087
-[INFO ] 2022-09-14 15:21:19.390 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 15:21:51.394 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 15:21:51.677 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7e307087
-[INFO ] 2022-09-14 15:21:51.678 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 15:25:07.455 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 15:25:07.742 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7e307087
-[INFO ] 2022-09-14 15:25:07.743 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 15:42:37.843 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 15:42:38.176 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@f5ce0bb
-[INFO ] 2022-09-14 15:42:38.178 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 15:43:04.711 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 15:43:05.020 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5edacf20
-[INFO ] 2022-09-14 15:43:05.021 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 15:50:38.388 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 15:50:38.683 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5edacf20
-[INFO ] 2022-09-14 15:50:38.684 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 15:50:49.531 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 15:50:49.831 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5a49af50
-[INFO ] 2022-09-14 15:50:49.833 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 15:56:41.304 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 15:56:41.627 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1b509fb1
-[INFO ] 2022-09-14 15:56:41.630 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 15:56:47.909 [http-nio-8083-exec-4] UserLoginServlet - User_Login_successfully
-[INFO ] 2022-09-14 15:56:58.522 [http-nio-8083-exec-9] UserLoginServlet - Balance added
-[INFO ] 2022-09-14 15:57:45.799 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 15:57:46.098 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5edacf20
-[INFO ] 2022-09-14 15:57:46.099 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 15:57:46.138 [main] UserLoginServlet - Balance added
-[INFO ] 2022-09-14 15:57:57.417 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 15:57:57.714 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@31db34da
-[INFO ] 2022-09-14 15:57:57.715 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 15:57:57.754 [main] UserLoginServlet - Balance added
-[INFO ] 2022-09-14 15:58:45.091 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 15:58:45.384 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@16a5eb6d
-[INFO ] 2022-09-14 15:58:45.386 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 15:58:45.420 [main] UserLoginServlet - Balance added
-[INFO ] 2022-09-14 15:59:34.840 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 15:59:35.146 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5a49af50
-[INFO ] 2022-09-14 15:59:35.147 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 15:59:51.427 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 15:59:51.710 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7e307087
-[INFO ] 2022-09-14 15:59:51.712 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 16:00:41.702 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 16:00:41.999 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@38cedb7d
-[INFO ] 2022-09-14 16:00:42.000 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 16:00:42.036 [main] UserLoginServlet - Balance added
-[INFO ] 2022-09-14 16:00:42.080 [main] UserLoginServlet - User_Login_successfully
-[INFO ] 2022-09-14 16:00:42.094 [main] UserLoginServlet - Move to payments
-[INFO ] 2022-09-14 16:01:57.638 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 16:01:57.926 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7e307087
-[INFO ] 2022-09-14 16:01:57.927 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 16:31:13.594 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 16:31:13.938 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@939ff41
-[INFO ] 2022-09-14 16:31:13.940 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 16:31:13.978 [main] UserLoginServlet - Balance added
-[INFO ] 2022-09-14 16:31:14.017 [main] UserLoginServlet - User_Login_successfully
-[INFO ] 2022-09-14 16:31:14.038 [main] UserLoginServlet - Move to payments
-[INFO ] 2022-09-14 16:43:06.280 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 16:43:06.607 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7bfe5e53
-[INFO ] 2022-09-14 16:43:06.609 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 16:43:15.713 [http-nio-8083-exec-9] UserLoginServlet - Admin_Login_successfully
-[INFO ] 2022-09-14 16:43:40.199 [http-nio-8083-exec-2] UserLoginServlet - Cruise updated
-[INFO ] 2022-09-14 16:44:13.610 [http-nio-8083-exec-1] UserLoginServlet - Cruise updated
-[INFO ] 2022-09-14 16:44:28.007 [http-nio-8083-exec-5] UserLoginServlet - Cruise updated
-[INFO ] 2022-09-14 16:44:39.315 [http-nio-8083-exec-10] UserLoginServlet - Cruise updated
-[INFO ] 2022-09-14 16:44:51.051 [http-nio-8083-exec-4] UserLoginServlet - Cruise updated
-[INFO ] 2022-09-14 16:46:54.112 [http-nio-8083-exec-3] UserLoginServlet - User=null logout
-[INFO ] 2022-09-14 16:50:25.208 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 16:50:25.508 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@47e51549
-[INFO ] 2022-09-14 16:50:25.509 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 16:52:05.390 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 16:52:05.697 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5edacf20
-[INFO ] 2022-09-14 16:52:05.699 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 16:52:05.737 [main] UserLoginServlet - Admin_Login_successfully
-[INFO ] 2022-09-14 16:52:21.909 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 16:52:22.211 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5edacf20
-[INFO ] 2022-09-14 16:52:22.212 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 16:52:22.252 [main] UserLoginServlet - Admin_Login_successfully
-[INFO ] 2022-09-14 16:54:00.959 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 16:54:01.273 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@21eee94f
-[INFO ] 2022-09-14 16:54:01.275 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 16:54:07.185 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 16:54:07.504 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@47e51549
-[INFO ] 2022-09-14 16:54:07.506 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 16:54:07.560 [main] UserLoginServlet - Admin_Login_successfully
-[INFO ] 2022-09-14 16:54:48.946 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 16:54:49.258 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@109f8c7e
-[INFO ] 2022-09-14 16:54:49.260 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 16:54:49.322 [main] UserLoginServlet - Admin_Login_successfully
-[INFO ] 2022-09-14 17:10:00.338 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 17:10:00.654 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@64e92d61
-[INFO ] 2022-09-14 17:10:00.655 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 17:10:37.377 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 17:10:37.692 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@263558c9
-[INFO ] 2022-09-14 17:10:37.693 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 17:11:19.380 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 17:11:19.707 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@b0964b2
-[INFO ] 2022-09-14 17:11:19.707 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 17:11:53.414 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 17:11:53.729 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@b0964b2
-[INFO ] 2022-09-14 17:11:53.731 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 17:12:52.981 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 17:12:53.296 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@b0964b2
-[INFO ] 2022-09-14 17:12:53.298 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 17:13:47.112 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 17:13:47.431 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@b0964b2
-[INFO ] 2022-09-14 17:13:47.433 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 17:14:04.565 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 17:14:04.875 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@b0964b2
-[INFO ] 2022-09-14 17:14:04.876 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 17:14:36.076 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 17:14:36.403 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@b0964b2
-[INFO ] 2022-09-14 17:14:36.404 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 17:15:54.065 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 17:15:54.379 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1059754c
-[INFO ] 2022-09-14 17:15:54.381 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 17:16:58.019 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 17:16:58.331 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1059754c
-[INFO ] 2022-09-14 17:16:58.333 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 17:17:49.300 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 17:17:49.622 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@b0964b2
-[INFO ] 2022-09-14 17:17:49.624 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 17:20:27.256 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 17:20:27.568 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@b0964b2
-[INFO ] 2022-09-14 17:20:27.570 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 17:20:44.465 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 17:20:44.779 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@b0964b2
-[INFO ] 2022-09-14 17:20:44.781 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 17:24:21.965 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 17:24:22.279 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@77fa9381
-[INFO ] 2022-09-14 17:24:22.281 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 17:24:22.319 [main] UserLoginServlet - Balance added
-[INFO ] 2022-09-14 17:24:22.346 [main] UserLoginServlet - User_Login_successfully
-[INFO ] 2022-09-14 17:24:22.367 [main] UserLoginServlet - Admin_Login_successfully
-[INFO ] 2022-09-14 17:24:22.394 [main] UserLoginServlet - Move to payments
-[INFO ] 2022-09-14 17:25:29.543 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 17:25:29.853 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1682c08c
-[INFO ] 2022-09-14 17:25:29.855 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 17:25:29.896 [main] UserLoginServlet - Balance added
-[INFO ] 2022-09-14 17:25:29.926 [main] UserLoginServlet - User_Login_successfully
-[INFO ] 2022-09-14 17:25:29.947 [main] UserLoginServlet - Admin_Login_successfully
-[INFO ] 2022-09-14 17:25:29.969 [main] UserLoginServlet - Move to payments
-[INFO ] 2022-09-14 17:27:08.055 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 17:27:08.390 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@263558c9
-[INFO ] 2022-09-14 17:27:08.392 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 17:38:18.269 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 17:38:18.582 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@b0964b2
-[INFO ] 2022-09-14 17:38:18.584 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 17:39:11.363 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 17:39:11.670 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@b0964b2
-[INFO ] 2022-09-14 17:39:11.671 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 17:45:21.365 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 17:45:21.664 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@b0964b2
-[INFO ] 2022-09-14 17:45:21.665 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 17:46:36.415 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 17:46:36.712 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@b0964b2
-[INFO ] 2022-09-14 17:46:36.713 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 17:47:12.180 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 17:47:12.486 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@b0964b2
-[INFO ] 2022-09-14 17:47:12.487 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 17:47:51.729 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 17:47:52.020 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@b0964b2
-[INFO ] 2022-09-14 17:47:52.021 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 17:48:07.159 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 17:48:07.455 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@b0964b2
-[INFO ] 2022-09-14 17:48:07.457 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 17:48:28.495 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 17:48:28.786 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@b0964b2
-[INFO ] 2022-09-14 17:48:28.787 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 17:49:13.666 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 17:49:13.959 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@b0964b2
-[INFO ] 2022-09-14 17:49:13.961 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 17:49:56.379 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 17:49:56.678 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1059754c
-[INFO ] 2022-09-14 17:49:56.679 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 18:03:52.463 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 18:03:52.773 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@dd2856e
-[INFO ] 2022-09-14 18:03:52.774 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 18:03:52.800 [main] UserLoginServlet - Order_accepted
-[INFO ] 2022-09-14 18:09:32.663 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 18:09:32.956 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@19e0dffe
-[INFO ] 2022-09-14 18:09:32.958 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 18:09:32.978 [main] UserLoginServlet - Order_accepted
-[INFO ] 2022-09-14 18:13:21.430 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 18:13:21.721 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3f5156a6
-[INFO ] 2022-09-14 18:13:21.722 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 18:13:21.759 [main] UserLoginServlet - Balance added
-[INFO ] 2022-09-14 18:13:21.784 [main] UserLoginServlet - User_Login_successfully
-[INFO ] 2022-09-14 18:13:21.804 [main] UserLoginServlet - Admin_Login_successfully
-[INFO ] 2022-09-14 18:13:21.824 [main] UserLoginServlet - Move to payments
-[INFO ] 2022-09-14 18:13:21.828 [main] UserLoginServlet - Order_accepted
-[INFO ] 2022-09-14 18:18:04.444 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 18:18:04.774 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@19e0dffe
-[INFO ] 2022-09-14 18:18:04.775 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 18:18:04.818 [main] UserLoginServlet - Order_cancelled
-[INFO ] 2022-09-14 18:19:58.200 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 18:19:58.529 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5dbb50f3
-[INFO ] 2022-09-14 18:19:58.531 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 18:19:58.557 [main] UserLoginServlet - Order_cancelled
-[INFO ] 2022-09-14 18:19:58.604 [main] UserLoginServlet - Balance added
-[INFO ] 2022-09-14 18:19:58.628 [main] UserLoginServlet - User_Login_successfully
-[INFO ] 2022-09-14 18:19:58.650 [main] UserLoginServlet - Admin_Login_successfully
-[INFO ] 2022-09-14 18:19:58.682 [main] UserLoginServlet - Move to payments
-[INFO ] 2022-09-14 18:19:58.686 [main] UserLoginServlet - Order_accepted
-[INFO ] 2022-09-14 18:25:52.835 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 18:25:53.141 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@9e54c59
-[INFO ] 2022-09-14 18:25:53.142 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 18:25:53.168 [main] UserLoginServlet - Order_cancelled
-[INFO ] 2022-09-14 18:25:53.212 [main] UserLoginServlet - Balance added
-[INFO ] 2022-09-14 18:25:53.235 [main] UserLoginServlet - User_Login_successfully
-[INFO ] 2022-09-14 18:25:53.255 [main] UserLoginServlet - Admin_Login_successfully
-[INFO ] 2022-09-14 18:25:53.284 [main] UserLoginServlet - Move to payments
-[INFO ] 2022-09-14 18:25:53.288 [main] UserLoginServlet - Order_accepted
-[INFO ] 2022-09-14 18:26:04.573 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 18:26:04.901 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4e4384ef
-[INFO ] 2022-09-14 18:26:04.904 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 18:26:12.211 [http-nio-8083-exec-3] UserLoginServlet - User_Login_successfully
-[INFO ] 2022-09-14 18:26:25.308 [http-nio-8083-exec-1] UserLoginServlet - Added_to_cart
-[INFO ] 2022-09-14 18:26:30.436 [http-nio-8083-exec-2] UserLoginServlet - Move to payments
-[INFO ] 2022-09-14 18:26:33.371 [http-nio-8083-exec-5] UserLoginServlet - Documents_uploaded
-[INFO ] 2022-09-14 18:26:33.379 [http-nio-8083-exec-5] UserLoginServlet - Cruise_bought
-[INFO ] 2022-09-14 18:26:42.353 [http-nio-8083-exec-6] UserLoginServlet - Move to payments
-[INFO ] 2022-09-14 18:26:45.938 [http-nio-8083-exec-9] UserLoginServlet - Documents_uploaded
-[INFO ] 2022-09-14 18:26:45.946 [http-nio-8083-exec-9] UserLoginServlet - Cruise_bought
-[INFO ] 2022-09-14 18:26:49.870 [http-nio-8083-exec-5] UserLoginServlet - Move to payments
-[INFO ] 2022-09-14 18:26:57.002 [http-nio-8083-exec-7] UserLoginServlet - Documents_uploaded
-[INFO ] 2022-09-14 18:26:57.010 [http-nio-8083-exec-7] UserLoginServlet - Cruise_bought
-[INFO ] 2022-09-14 18:27:05.146 [http-nio-8083-exec-9] UserLoginServlet - Move to payments
-[INFO ] 2022-09-14 18:27:09.058 [http-nio-8083-exec-2] UserLoginServlet - Documents_uploaded
-[INFO ] 2022-09-14 18:27:09.066 [http-nio-8083-exec-2] UserLoginServlet - Cruise_bought
-[INFO ] 2022-09-14 18:27:16.715 [http-nio-8083-exec-3] UserLoginServlet - Move to payments
-[INFO ] 2022-09-14 18:27:19.541 [http-nio-8083-exec-6] UserLoginServlet - Documents_uploaded
-[INFO ] 2022-09-14 18:27:19.548 [http-nio-8083-exec-6] UserLoginServlet - Cruise_bought
-[INFO ] 2022-09-14 18:28:05.825 [http-nio-8083-exec-8] UserLoginServlet - User=storuk logout
-[INFO ] 2022-09-14 18:28:51.288 [http-nio-8083-exec-1] UserLoginServlet - Added_to_cart
-[INFO ] 2022-09-14 18:28:58.802 [http-nio-8083-exec-1] UserLoginServlet - Cruise_removed_from_cart
-[INFO ] 2022-09-14 18:29:34.902 [http-nio-8083-exec-6] UserLoginServlet - User_Login_successfully
-[INFO ] 2022-09-14 18:29:37.878 [http-nio-8083-exec-1] UserLoginServlet - Move to payments
-[INFO ] 2022-09-14 18:29:54.885 [http-nio-8083-exec-4] UserLoginServlet - Documents_uploaded
-[INFO ] 2022-09-14 18:29:54.891 [http-nio-8083-exec-4] UserLoginServlet - Cruise_bought
-[INFO ] 2022-09-14 18:30:25.255 [http-nio-8083-exec-8] UserLoginServlet - Order Deleted
-[INFO ] 2022-09-14 18:31:01.759 [http-nio-8083-exec-4] UserLoginServlet - Balance added
-[INFO ] 2022-09-14 18:31:15.146 [http-nio-8083-exec-6] UserLoginServlet - Order Deleted
-[INFO ] 2022-09-14 18:31:50.225 [http-nio-8083-exec-8] UserLoginServlet - Order Deleted
-[INFO ] 2022-09-14 18:32:23.902 [http-nio-8083-exec-3] UserLoginServlet - User=storuk logout
-[INFO ] 2022-09-14 18:32:31.875 [http-nio-8083-exec-1] UserLoginServlet - Admin_Login_successfully
-[INFO ] 2022-09-14 18:32:48.283 [http-nio-8083-exec-2] UserLoginServlet - Order_accepted
-[INFO ] 2022-09-14 18:32:55.067 [http-nio-8083-exec-3] UserLoginServlet - Order_cancelled
-[INFO ] 2022-09-14 18:33:19.560 [http-nio-8083-exec-9] UserLoginServlet - User=null logout
-[INFO ] 2022-09-14 18:33:34.293 [http-nio-8083-exec-3] UserLoginServlet - User_Login_successfully
-[INFO ] 2022-09-14 18:33:43.724 [http-nio-8083-exec-7] UserLoginServlet - Added_to_cart
-[INFO ] 2022-09-14 18:33:49.165 [http-nio-8083-exec-4] UserLoginServlet - Move to payments
-[INFO ] 2022-09-14 18:33:51.909 [http-nio-8083-exec-5] UserLoginServlet - Documents_uploaded
-[INFO ] 2022-09-14 18:33:51.916 [http-nio-8083-exec-5] UserLoginServlet - Cruise_bought
-[INFO ] 2022-09-14 18:33:57.990 [http-nio-8083-exec-2] UserLoginServlet - Order Deleted
-[INFO ] 2022-09-14 18:34:06.329 [http-nio-8083-exec-9] UserLoginServlet - User=storuk logout
-[INFO ] 2022-09-14 18:34:13.621 [http-nio-8083-exec-8] UserLoginServlet - Admin_Login_successfully
-[INFO ] 2022-09-14 18:35:28.524 [http-nio-8083-exec-10] UserLoginServlet - Cruise updated
-[INFO ] 2022-09-14 18:36:06.867 [http-nio-8083-exec-5] UserLoginServlet - Cruise deleted
-[INFO ] 2022-09-14 18:37:20.146 [http-nio-8083-exec-1] UserLoginServlet - Cruise updated
-[INFO ] 2022-09-14 18:38:01.986 [http-nio-8083-exec-6] UserLoginServlet - cruise added
-[INFO ] 2022-09-14 18:39:12.493 [http-nio-8083-exec-8] UserLoginServlet - cruise added
-[INFO ] 2022-09-14 18:40:18.902 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 18:40:19.202 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@74f827ad
-[INFO ] 2022-09-14 18:40:19.203 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 18:40:19.230 [main] UserLoginServlet - Order_cancelled
-[INFO ] 2022-09-14 18:40:19.273 [main] UserLoginServlet - Balance added
-[INFO ] 2022-09-14 18:40:19.293 [main] UserLoginServlet - User_Login_successfully
-[INFO ] 2022-09-14 18:40:19.313 [main] UserLoginServlet - Admin_Login_successfully
-[INFO ] 2022-09-14 18:40:19.348 [main] UserLoginServlet - Move to payments
-[INFO ] 2022-09-14 18:40:19.353 [main] UserLoginServlet - Order_accepted
-[INFO ] 2022-09-14 18:40:39.694 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 18:40:40.011 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@d535a3d
-[INFO ] 2022-09-14 18:40:40.012 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 18:40:40.038 [main] UserLoginServlet - Order_cancelled
-[INFO ] 2022-09-14 18:40:40.083 [main] UserLoginServlet - Balance added
-[INFO ] 2022-09-14 18:40:40.106 [main] UserLoginServlet - User_Login_successfully
-[INFO ] 2022-09-14 18:40:40.128 [main] UserLoginServlet - Admin_Login_successfully
-[INFO ] 2022-09-14 18:40:40.162 [main] UserLoginServlet - Move to payments
-[INFO ] 2022-09-14 18:40:40.166 [main] UserLoginServlet - Order_accepted
-[INFO ] 2022-09-14 18:45:18.389 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 18:45:18.688 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7c1447b5
-[INFO ] 2022-09-14 18:45:18.689 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 18:45:18.716 [main] UserLoginServlet - Order_cancelled
-[INFO ] 2022-09-14 18:45:18.757 [main] UserLoginServlet - Balance added
-[INFO ] 2022-09-14 18:45:18.778 [main] UserLoginServlet - User_Login_successfully
-[INFO ] 2022-09-14 18:45:18.796 [main] UserLoginServlet - Admin_Login_successfully
-[INFO ] 2022-09-14 18:45:18.826 [main] UserLoginServlet - Move to payments
-[INFO ] 2022-09-14 18:45:18.829 [main] UserLoginServlet - Order_accepted
-[INFO ] 2022-09-14 18:45:33.026 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 18:45:33.336 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4e4384ef
-[INFO ] 2022-09-14 18:45:33.339 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 18:45:42.074 [http-nio-8083-exec-1] UserLoginServlet - Admin_Login_successfully
-[INFO ] 2022-09-14 18:48:54.934 [http-nio-8083-exec-3] UserLoginServlet - cruise added
-[INFO ] 2022-09-14 18:54:57.747 [main] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 18:54:58.052 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@40729f01
-[INFO ] 2022-09-14 18:54:58.053 [main] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 18:54:58.076 [main] UserLoginServlet - Order_cancelled
-[INFO ] 2022-09-14 18:54:58.120 [main] UserLoginServlet - Balance added
-[INFO ] 2022-09-14 18:54:58.140 [main] UserLoginServlet - User_Login_successfully
-[INFO ] 2022-09-14 18:54:58.159 [main] UserLoginServlet - Admin_Login_successfully
-[INFO ] 2022-09-14 18:54:58.188 [main] UserLoginServlet - Move to payments
-[INFO ] 2022-09-14 18:54:58.192 [main] UserLoginServlet - Order_accepted
-[INFO ] 2022-09-14 19:04:45.653 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 19:04:45.982 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4e4384ef
-[INFO ] 2022-09-14 19:04:45.985 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 19:05:39.486 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 19:05:39.801 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4e4384ef
-[INFO ] 2022-09-14 19:05:39.804 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 19:05:56.475 [http-nio-8083-exec-2] UserLoginServlet - User_Login_successfully
-[INFO ] 2022-09-14 19:06:22.611 [http-nio-8083-exec-4] UserLoginServlet - User=storuk logout
-[INFO ] 2022-09-14 19:06:30.032 [http-nio-8083-exec-1] UserLoginServlet - Admin_Login_successfully
-[INFO ] 2022-09-14 19:06:36.048 [http-nio-8083-exec-4] UserLoginServlet - Cruise deleted
-[INFO ] 2022-09-14 19:06:37.733 [http-nio-8083-exec-7] UserLoginServlet - Cruise deleted
-[INFO ] 2022-09-14 19:06:43.398 [http-nio-8083-exec-9] UserLoginServlet - Cruise deleted
-[INFO ] 2022-09-14 19:07:32.834 [http-nio-8083-exec-10] UserLoginServlet - cruise added
-[INFO ] 2022-09-14 19:07:58.104 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 19:07:58.456 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4e4384ef
-[INFO ] 2022-09-14 19:07:58.459 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 19:08:49.448 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
-[INFO ] 2022-09-14 19:08:49.766 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4e4384ef
-[INFO ] 2022-09-14 19:08:49.769 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
-[INFO ] 2022-09-14 19:09:11.925 [http-nio-8083-exec-1] UserLoginServlet - Admin_Login_successfully
+[INFO ] 2022-09-15 00:04:09.287 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-09-15 00:04:09.629 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4e023557
+[INFO ] 2022-09-15 00:04:09.632 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-09-15 00:58:25.163 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-09-15 00:58:25.529 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@211fee4a
+[INFO ] 2022-09-15 00:58:25.531 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-09-15 01:01:30.761 [http-nio-8083-exec-2] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-09-15 01:01:31.087 [http-nio-8083-exec-2] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@38f0f433
+[INFO ] 2022-09-15 01:01:31.090 [http-nio-8083-exec-2] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-09-15 01:01:32.957 [http-nio-8083-exec-6] UserLoginServlet - Added_to_cart
+[INFO ] 2022-09-15 01:03:55.452 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-09-15 01:03:55.838 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7b4f7cef
+[INFO ] 2022-09-15 01:03:55.841 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-09-15 01:03:58.102 [http-nio-8083-exec-6] UserLoginServlet - Added_to_cart
+[INFO ] 2022-09-15 01:04:09.256 [http-nio-8083-exec-9] UserLoginServlet - User_Login_successfully
+[INFO ] 2022-09-15 01:04:11.532 [http-nio-8083-exec-2] UserLoginServlet - Move to payments
+[WARN ] 2022-09-15 01:06:37.847 [HikariPool-1 housekeeper] HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=49s16ms814µs700ns).
+[INFO ] 2022-09-15 01:06:59.449 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-09-15 01:06:59.788 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5c6bb887
+[INFO ] 2022-09-15 01:06:59.791 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-09-15 01:08:08.981 [http-nio-8083-exec-8] UserLoginServlet - Added_to_cart
+[WARN ] 2022-09-15 01:08:51.131 [HikariPool-1 housekeeper] HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=51s216ms896µs600ns).
+[WARN ] 2022-09-15 01:11:20.613 [HikariPool-1 housekeeper] HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m29s482ms83µs600ns).
+[INFO ] 2022-09-15 01:12:02.977 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-09-15 01:12:03.308 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4e4384ef
+[INFO ] 2022-09-15 01:12:03.310 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-09-15 01:12:12.981 [http-nio-8083-exec-6] UserLoginServlet - Added_to_cart
+[INFO ] 2022-09-15 01:15:47.349 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-09-15 01:15:47.691 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3d8b5d2f
+[INFO ] 2022-09-15 01:15:47.694 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-09-15 01:15:50.998 [http-nio-8083-exec-6] UserLoginServlet - Added_to_cart
+[INFO ] 2022-09-15 01:16:12.448 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-09-15 01:16:12.788 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@65e7f52a
+[INFO ] 2022-09-15 01:16:12.789 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-09-15 01:16:36.921 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-09-15 01:16:37.233 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@65e7f52a
+[INFO ] 2022-09-15 01:16:37.235 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-09-15 01:19:40.638 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-09-15 01:19:40.946 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@65e7f52a
+[INFO ] 2022-09-15 01:19:40.947 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-09-15 01:19:56.471 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-09-15 01:19:56.788 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@65e7f52a
+[INFO ] 2022-09-15 01:19:56.790 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-09-15 01:20:04.692 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-09-15 01:20:05.000 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@65e7f52a
+[INFO ] 2022-09-15 01:20:05.001 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-09-15 01:20:39.346 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-09-15 01:20:39.667 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@65e7f52a
+[INFO ] 2022-09-15 01:20:39.669 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-09-15 01:20:51.321 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-09-15 01:20:51.634 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@65e7f52a
+[INFO ] 2022-09-15 01:20:51.636 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-09-15 01:21:05.226 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-09-15 01:21:05.558 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@211fee4a
+[INFO ] 2022-09-15 01:21:05.561 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-09-15 01:21:07.618 [http-nio-8083-exec-6] UserLoginServlet - Added_to_cart
+[INFO ] 2022-09-15 01:23:09.281 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-09-15 01:23:09.596 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@304b9f1a
+[INFO ] 2022-09-15 01:23:09.597 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-09-15 01:23:19.979 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-09-15 01:23:20.287 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@65e7f52a
+[INFO ] 2022-09-15 01:23:20.289 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-09-15 01:23:35.956 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-09-15 01:23:36.284 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3d8b5d2f
+[INFO ] 2022-09-15 01:23:36.287 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-09-15 01:23:43.049 [http-nio-8083-exec-9] UserLoginServlet - Added_to_cart
+[INFO ] 2022-09-15 01:24:35.319 [main] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-09-15 01:24:35.629 [main] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@65e7f52a
+[INFO ] 2022-09-15 01:24:35.630 [main] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-09-15 01:24:53.894 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2022-09-15 01:24:54.229 [http-nio-8083-exec-1] HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4e4384ef
+[INFO ] 2022-09-15 01:24:54.231 [http-nio-8083-exec-1] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2022-09-15 01:24:57.772 [http-nio-8083-exec-8] UserLoginServlet - Added_to_cart

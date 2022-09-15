@@ -60,13 +60,6 @@ public class OrderServlet extends HttpServlet {
         User user = (User) request.getSession().getAttribute("user");
         try (PrintWriter out = response.getWriter()) {
 
-            if(request.getParameter("cruiseID")== null ){
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
-                dispatcher.forward(request, response);
-            }
-            if (session.getAttribute("Cruise_price") == null){
-                response.sendRedirect("orders.jsp");
-            }
             BigDecimal balance = user.getScore();
             BigDecimal sum = new BigDecimal(request.getParameter("sum"));
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -83,69 +76,75 @@ public class OrderServlet extends HttpServlet {
             int places = Integer.parseInt(request.getParameter("places"));
             String cruiseName = request.getParameter("cruiseName");
 
-            if(places < cruiseQuantity){
+            if(request.getParameter("cruiseID")== null || session.getAttribute("Cruise_price") == null){
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+                dispatcher.forward(request, response);
+            }
+
+            else if(places < cruiseQuantity){
                 request.setAttribute("status", "No_enough_places");
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/cruise_pay.jsp");
                 dispatcher.forward(request, response);
             }
 
-            if(Objects.equals(fileName, ".jpg") || Objects.equals(fileName, ".png") || Objects.equals(fileName, ".svg")) {
-                if (sum.compareTo(balance) <= 0) {
-                    FileOutputStream fos = new FileOutputStream("C:\\Users\\Влад\\IdeaProjects\\final_project2\\src\\main\\webapp\\documents_images\\" + full_filename);
-                    InputStream is = file.getInputStream();
-                    byte[] data = new byte[is.available()];
-                    is.read(data);
-                    fos.write(data);
-                    fos.close();
-                    logger.info("Documents_uploaded");
-
-                    CruiseDao.UpdateMinusCruisePlaces(Integer.parseInt(cruiseId), cruiseQuantity);
-                    UserOrdersDao.PayForCruise(user.getId(), sum);
-                    User update = UserDao.validate(String.valueOf(user.getUsername()), String.valueOf(user.getPassword()));
-                    request.getSession().setAttribute("user", update);
-
-                    if (cruiseQuantity <= 0) {
-                        cruiseQuantity = 1;
-                    }
-                    UserOrders orderModel = new UserOrders();
-                    orderModel.setId(Integer.parseInt(cruiseId));
-                    orderModel.setU_id(user.getId());
-                    orderModel.setQuantity(cruiseQuantity);
-                    orderModel.setStatusId(CruiseStatusEnum.IN_PROGRESS);
-                    orderModel.setDate(formatter.format(date));
-                    orderModel.setPaymentAmount(sum);
-                    orderModel.setImages(full_filename);
-                    orderModel.setCruise_name(cruiseName);
-                    UserOrdersDao orderDao = new UserOrdersDao();
-                    boolean result = orderDao.insertOrder(orderModel);
-
-                    if (result) {
-                        ArrayList<Cart> cart_list = (ArrayList<Cart>) request.getSession().getAttribute("cart-list");
-                        if (cart_list != null) {
-                            for (Cart c : cart_list) {
-                                if (c.getId() == Integer.parseInt(cruiseId)) {
-                                    cart_list.remove(cart_list.indexOf(c));
-                                    break;
-                                }
-                            }
-                        }
-                        logger.info("Cruise_bought");
-                        session.removeAttribute("Cruise_price");
-                        response.sendRedirect("OrdersPaginationServlet?records=5&page=1");
-                    } else {
-                        out.println("order failed");
-                    }
-                } else {
-                    request.setAttribute("status", "not_enough_balance");
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/cruise_pay.jsp");
-                    dispatcher.forward(request, response);
-                }
-            }
-            else{
+            else if(!Objects.equals(fileName, ".jpg") || !Objects.equals(fileName, ".png") || !Objects.equals(fileName, ".svg")) {
                 request.setAttribute("status", "documents_not_downloaded");
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/cruise_pay.jsp");
                 dispatcher.forward(request, response);
             }
+
+            else if (sum.compareTo(balance) <= 0) {
+                request.setAttribute("status", "not_enough_balance");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/cruise_pay.jsp");
+                dispatcher.forward(request, response);
+            }
+            else {
+                FileOutputStream fos = new FileOutputStream("C:\\Users\\Влад\\IdeaProjects\\final_project2\\src\\main\\webapp\\documents_images\\" + full_filename);
+                InputStream is = file.getInputStream();
+                byte[] data = new byte[is.available()];
+                is.read(data);
+                fos.write(data);
+                fos.close();
+                logger.info("Documents_uploaded");
+
+                CruiseDao.UpdateMinusCruisePlaces(Integer.parseInt(cruiseId), cruiseQuantity);
+                UserOrdersDao.PayForCruise(user.getId(), sum);
+                User update = UserDao.validate(String.valueOf(user.getUsername()), String.valueOf(user.getPassword()));
+                request.getSession().setAttribute("user", update);
+
+                if (cruiseQuantity <= 0) {
+                    cruiseQuantity = 1;
+                }
+                UserOrders orderModel = new UserOrders();
+                orderModel.setId(Integer.parseInt(cruiseId));
+                orderModel.setU_id(user.getId());
+                orderModel.setQuantity(cruiseQuantity);
+                orderModel.setStatusId(CruiseStatusEnum.IN_PROGRESS);
+                orderModel.setDate(formatter.format(date));
+                orderModel.setPaymentAmount(sum);
+                orderModel.setImages(full_filename);
+                orderModel.setCruise_name(cruiseName);
+                UserOrdersDao orderDao = new UserOrdersDao();
+                boolean result = orderDao.insertOrder(orderModel);
+
+                if (result) {
+                    ArrayList<Cart> cart_list = (ArrayList<Cart>) request.getSession().getAttribute("cart-list");
+                    if (cart_list != null) {
+                        for (Cart c : cart_list) {
+                            if (c.getId() == Integer.parseInt(cruiseId)) {
+                                cart_list.remove(cart_list.indexOf(c));
+                                break;
+                            }
+                        }
+                    }
+                    logger.info("Cruise_bought");
+                    session.removeAttribute("Cruise_price");
+                    response.sendRedirect("OrdersPaginationServlet?records=5&page=1");
+                } else {
+                    out.println("order failed");
+                }
+            }
+
 
         } catch (ClassNotFoundException | SQLException e) {
             // TODO Auto-generated catch block

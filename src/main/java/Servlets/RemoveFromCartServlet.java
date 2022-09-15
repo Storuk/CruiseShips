@@ -29,6 +29,7 @@ public class RemoveFromCartServlet extends HttpServlet {
                         }
                     }
                 }
+                logger.info("Cruise removed");
                 response.sendRedirect("cart.jsp");
 
             } else {

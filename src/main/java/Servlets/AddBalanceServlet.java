@@ -43,9 +43,9 @@ public class AddBalanceServlet extends HttpServlet {
                 UserDao.AddMoney(Integer.parseInt(id), new BigDecimal(new_balance));
                 User update = UserDao.validate(username, password);
                 request.getSession().setAttribute("user", update);
-                logger.info("Balance added");
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("/user_profile.jsp");
                 requestDispatcher.forward(request,response);
+                logger.info("Balance added");
             }
         }
         catch (Exception e) {

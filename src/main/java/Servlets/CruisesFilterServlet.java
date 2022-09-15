@@ -2,6 +2,8 @@ package Servlets;
 
 import Dao.CruiseDao;
 import Entities.Cruise;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -20,7 +22,7 @@ public class CruisesFilterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
     }
-
+    private static final Logger logger = LoggerFactory.getLogger(UserLoginServlet.class);
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
@@ -88,7 +90,7 @@ public class CruisesFilterServlet extends HttpServlet {
             }
         }
         session.setAttribute("filtered_cruises", cruises);
-
+        logger.info("Filter used");
         RequestDispatcher dispatcher = request.getRequestDispatcher((String) request.getSession().getAttribute("responsePage"));
         dispatcher.forward(request, response);
 

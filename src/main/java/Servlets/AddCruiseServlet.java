@@ -84,10 +84,11 @@ public class AddCruiseServlet extends HttpServlet {
                         fos.close();
 
                         CruiseDao.addCruise(cruise);
-                        logger.info("cruise added");
+
                         request.setAttribute("status", "Uploaded");
                         RequestDispatcher dispatcher = request.getRequestDispatcher("/add_cruise.jsp");
                         dispatcher.forward(request, response);
+                        logger.info("cruise added");
                     } else {
                         request.setAttribute("status", "Invalid_photo_type");
                         RequestDispatcher dispatcher = request.getRequestDispatcher("/add_cruise.jsp");

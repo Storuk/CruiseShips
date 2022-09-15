@@ -1,7 +1,10 @@
 package Dao;
 
 import Entities.Cart;
+import Servlets.UserLoginServlet;
 import connection.ConnectionManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
 import java.sql.*;
@@ -10,7 +13,7 @@ import java.util.List;
 
 public class CartDao {
     private static ConnectionManager cm = ConnectionManager.getInstance();
-
+    private static final Logger logger = LoggerFactory.getLogger(UserLoginServlet.class);
     public List<Cart> getCartProducts(ArrayList<Cart> cartList) {
         List<Cart> cruises = new ArrayList<>();
        try{

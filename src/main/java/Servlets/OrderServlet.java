@@ -1,4 +1,5 @@
 package Servlets;
+
 import Dao.*;
 import Entities.*;
 import Enums.CruiseStatusEnum;
@@ -28,6 +29,7 @@ import static controller.security.PasswordEncrypt.ConvertImage;
 )
 public class OrderServlet extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(UserLoginServlet.class);
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User auth = (User) request.getSession().getAttribute("user");
@@ -39,16 +41,15 @@ public class OrderServlet extends HttpServlet {
             int places = Integer.parseInt(request.getParameter("places"));
             String Cruise_price = request.getParameter("Cruise_price");
 
-            request.setAttribute("cruiseID",cruiseId);
-            request.setAttribute("cruiseQuantity",cruiseQuantity);
-            request.setAttribute("places",places);
-            request.setAttribute("cruiseName",cruiseName);
-            session.setAttribute("Cruise_price",Cruise_price);
+            request.setAttribute("cruiseID", cruiseId);
+            request.setAttribute("cruiseQuantity", cruiseQuantity);
+            request.setAttribute("places", places);
+            request.setAttribute("cruiseName", cruiseName);
+            session.setAttribute("Cruise_price", Cruise_price);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/cruise_pay.jsp");
             dispatcher.forward(request, response);
             logger.info("Move to payments");
-        }
-        else {
+        } else {
             response.sendRedirect("login.jsp");
         }
     }
@@ -72,33 +73,26 @@ public class OrderServlet extends HttpServlet {
             String full_filename = description + fileName;
 
             String cruiseId = request.getParameter("cruiseID");
-            int cruiseQuantity = Integer.parseInt( request.getParameter("cruiseQuantity"));
+            int cruiseQuantity = Integer.parseInt(request.getParameter("cruiseQuantity"));
             int places = Integer.parseInt(request.getParameter("places"));
             String cruiseName = request.getParameter("cruiseName");
 
-            if(request.getParameter("cruiseID")== null || session.getAttribute("Cruise_price") == null){
+            if (request.getParameter("cruiseID") == null || session.getAttribute("Cruise_price") == null) {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
                 dispatcher.forward(request, response);
-            }
-
-            else if(places < cruiseQuantity){
+            } else if (places < cruiseQuantity) {
                 request.setAttribute("status", "No_enough_places");
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/cruise_pay.jsp");
                 dispatcher.forward(request, response);
-            }
-
-            else if(!Objects.equals(fileName, ".jpg") || !Objects.equals(fileName, ".png") || !Objects.equals(fileName, ".svg")) {
+            } else if (!Objects.equals(fileName, ".jpg") || !Objects.equals(fileName, ".png") || !Objects.equals(fileName, ".svg")) {
                 request.setAttribute("status", "documents_not_downloaded");
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/cruise_pay.jsp");
                 dispatcher.forward(request, response);
-            }
-
-            else if (sum.compareTo(balance) > 0) {
+            } else if (sum.compareTo(balance) > 0) {
                 request.setAttribute("status", "not_enough_balance");
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/cruise_pay.jsp");
                 dispatcher.forward(request, response);
-            }
-            else {
+            } else {
                 FileOutputStream fos = new FileOutputStream("C:\\Users\\Влад\\IdeaProjects\\final_project2\\src\\main\\webapp\\documents_images\\" + full_filename);
                 InputStream is = file.getInputStream();
                 byte[] data = new byte[is.available()];

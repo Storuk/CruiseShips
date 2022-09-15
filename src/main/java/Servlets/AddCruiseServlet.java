@@ -30,6 +30,7 @@ public class AddCruiseServlet extends HttpServlet {
     Ships ship = new Ships();
     Cruise cruise = new Cruise();
     private static final Logger logger = LoggerFactory.getLogger(UserLoginServlet.class);
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.sendRedirect("add_cruise.jsp");
@@ -50,7 +51,7 @@ public class AddCruiseServlet extends HttpServlet {
         String full_filename = cruise_name + fileName;
         CruiseStatusEnum statusEnum = CruiseStatusEnum.REGISTERED;
 
-        if(ship_id != null) {
+        if (ship_id != null) {
             try {
                 ship = ShipsDao.selectShip(Integer.parseInt(ship_id));
             } catch (ClassNotFoundException e) {
@@ -74,22 +75,16 @@ public class AddCruiseServlet extends HttpServlet {
                 request.setAttribute("status", "Cruise_name_exist");
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/add_cruise.jsp");
                 dispatcher.forward(request, response);
-            }
-
-            else if (valid != null) {
+            } else if (valid != null) {
                 request.setAttribute("dates", "(" + valid.getStart_cruise_date() + ") - (" + valid.getEnd_cruise_date() + ")");
                 request.setAttribute("status", "Invalid_dates");
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/add_cruise.jsp");
                 dispatcher.forward(request, response);
-            }
-
-            else if (!Objects.equals(fileName, ".jpg") || !Objects.equals(fileName, ".png") || !Objects.equals(fileName, ".svg")) {
+            } else if (!Objects.equals(fileName, ".jpg") || !Objects.equals(fileName, ".png") || !Objects.equals(fileName, ".svg")) {
                 request.setAttribute("status", "Invalid_photo_type");
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/add_cruise.jsp");
                 dispatcher.forward(request, response);
-            }
-
-            else {
+            } else {
                 FileOutputStream fos = new FileOutputStream("C:\\Users\\Влад\\IdeaProjects\\final_project2\\src\\main\\webapp\\cruises_images\\" + full_filename);
                 InputStream is = file.getInputStream();
                 byte[] data = new byte[is.available()];
@@ -103,8 +98,7 @@ public class AddCruiseServlet extends HttpServlet {
                 dispatcher.forward(request, response);
                 logger.info("cruise added");
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
 

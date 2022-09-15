@@ -93,7 +93,7 @@ public class OrderServlet extends HttpServlet {
                 dispatcher.forward(request, response);
             }
 
-            else if (sum.compareTo(balance) <= 0) {
+            else if (sum.compareTo(balance) > 0) {
                 request.setAttribute("status", "not_enough_balance");
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/cruise_pay.jsp");
                 dispatcher.forward(request, response);
@@ -147,7 +147,6 @@ public class OrderServlet extends HttpServlet {
 
 
         } catch (ClassNotFoundException | SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

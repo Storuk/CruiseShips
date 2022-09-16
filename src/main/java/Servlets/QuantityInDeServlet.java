@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class QuantityInDeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try (PrintWriter out = response.getWriter()) {
+        try {
             String action = request.getParameter("action");
             int id = Integer.parseInt(request.getParameter("id"));
             int places = Integer.parseInt(request.getParameter("places"));
@@ -48,6 +48,8 @@ public class QuantityInDeServlet extends HttpServlet {
             } else {
                 response.sendRedirect("cart.jsp");
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

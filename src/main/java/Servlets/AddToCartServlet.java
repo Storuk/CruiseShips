@@ -16,12 +16,9 @@ public class AddToCartServlet extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(UserLoginServlet.class);
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-
+        try {
             ArrayList<Cart> cartList = new ArrayList<>();
             int id = Integer.parseInt(request.getParameter("id"));
-            int places = Integer.parseInt(request.getParameter("places"));
             Cart cm = new Cart();
             cm.setId(id);
             cm.setQuantity(1);
@@ -30,18 +27,15 @@ public class AddToCartServlet extends HttpServlet {
 
             if (cart_list == null) {
                 cartList.add(cm);
-                out.println("cart no exist");
                 session.setAttribute("cart-list", cartList);
                 response.sendRedirect("index.jsp");
                 logger.info("Added_to_cart");
             } else {
                 cartList = cart_list;
-
                 boolean exist = false;
                 for (Cart c : cart_list) {
                      if (c.getId() == id) {
                          exist = true;
-                         //out.println("<h3 style='color:crimson; text-align: center'>Item Already in Cart. <a href='cart.jsp'>GO to Cart Page</a></h3>");
                          request.setAttribute("status", "cruise_already_exist");
                          RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
                          dispatcher.forward(request, response);
@@ -49,10 +43,11 @@ public class AddToCartServlet extends HttpServlet {
                 }
                 if (!exist) {
                     cartList.add(cm);
-                    out.println("added");
                     response.sendRedirect("index.jsp");
                 }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

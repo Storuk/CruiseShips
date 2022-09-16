@@ -16,8 +16,7 @@ public class RemoveFromCartServlet extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(UserLoginServlet.class);
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        try {
             String bookId = request.getParameter("id");
             if (bookId != null) {
                 ArrayList<Cart> cart_list = (ArrayList<Cart>) request.getSession().getAttribute("cart-list");

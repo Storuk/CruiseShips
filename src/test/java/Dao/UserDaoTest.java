@@ -48,4 +48,15 @@ class UserDaoTest {
         user.setUsername("vlad");
         assertFalse(UserDao.checkName(user));
     }
+
+    @Test
+    void checkEmail() throws ClassNotFoundException {
+        User user = new User();
+
+        user.setEmail("vladstoroschuk@gmail.com");
+        assertTrue(UserDao.checkEmail(user));
+
+        user.setEmail("vlad@gmail.com");
+        assertFalse(UserDao.checkEmail(user));
+    }
 }

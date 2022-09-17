@@ -40,7 +40,6 @@ public class DeleteOrderServlet extends HttpServlet {
             }
             response.sendRedirect("OrdersPaginationServlet?records=5&page=1");
         } catch (ClassNotFoundException | SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

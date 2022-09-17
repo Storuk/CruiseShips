@@ -92,14 +92,31 @@ public class UserDao {
         }
     }
 
-    public static boolean check(User user) throws ClassNotFoundException {
+    public static boolean checkName(User user) throws ClassNotFoundException {
         boolean status = false;
 
         try(Connection con = cm.getConnection();
             PreparedStatement preparedStatement = con.prepareStatement("select * from users where uname = ?"))
         {
             preparedStatement.setString(1, user.getUsername());
-            System.out.println(preparedStatement);
+            try(ResultSet rs = preparedStatement.executeQuery()) {
+                status = rs.next();
+            }
+
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return status;
+    }
+
+    public static boolean checkEmail(User user) throws ClassNotFoundException {
+        boolean status = false;
+
+        try(Connection con = cm.getConnection();
+            PreparedStatement preparedStatement = con.prepareStatement("select * from users where uemail = ?"))
+        {
+            preparedStatement.setString(1, user.getEmail());
             try(ResultSet rs = preparedStatement.executeQuery()) {
                 status = rs.next();
             }

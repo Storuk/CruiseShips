@@ -39,13 +39,13 @@ class UserDaoTest {
     }
 
     @Test
-    void check() throws ClassNotFoundException {
+    void checkName() throws ClassNotFoundException {
         User user = new User();
 
         user.setUsername("storuk");
-        assertTrue(UserDao.check(user));
+        assertTrue(UserDao.checkName(user));
 
         user.setUsername("vlad");
-        assertFalse(UserDao.check(user));
+        assertFalse(UserDao.checkName(user));
     }
 }

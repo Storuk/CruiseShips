@@ -105,13 +105,13 @@
     var status = document.getElementById("status").value;
     if (status == "success") {
         swal("Congrats", "Account created successfully", "success");
-    }else if(status == "invalid_pass"){
+    } else if(status == "invalid_pass"){
         swal("Something went wrong", "Password are different", "error");
-    }
-    else if(status == "invalid_login"){
+    } else if(status == "invalid_login"){
         swal("Something went wrong", "Username already exist", "error");
-    }
-    else if(status == "invalid_password_type"){
+    } else if(status == "invalid_email"){
+        swal("Something went wrong", "Email already exist", "error");
+    } else if(status == "invalid_password_type"){
         swal("Something went wrong", "Password length should be 8", "error");
     }
 </script>

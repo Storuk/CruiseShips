@@ -12,8 +12,8 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.math.BigDecimal;
 
-
-import static Dao.UserDao.check;
+import static Dao.UserDao.checkEmail;
+import static Dao.UserDao.checkName;
 import static controller.security.PasswordEncrypt.hashPassword;
 
 @WebServlet(name = "UserServlet", value = "/register")
@@ -45,40 +45,36 @@ public class UserRegisterServlet extends HttpServlet {
         user.setScore(quantity);
         user.setRole(role);
 
-        if(password.length() < 8){
-            request.setAttribute("status", "invalid_password_type");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/userregister.jsp");
-            dispatcher.forward(request, response);
-        }
-
         try {
-            if (!check(user)) {
-                try {
-                    if (re_password.equals(password)) {
-                        HttpSession session = request.getSession();
-                        request.setAttribute("status", "success");
-                        UserDao.registerUser(user);
-                        session.setAttribute("User",username);
-                        logger.info("User_Registered_successfully");
-                    } else {
-                        request.setAttribute("status", "invalid_pass");
-                    }
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
+            if(password.length() < 8){
+                request.setAttribute("status", "invalid_password_type");
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/userregister.jsp");
                 dispatcher.forward(request, response);
             }
-            else {
+            else if (checkName(user)) {
                 request.setAttribute("status", "invalid_login");
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/userregister.jsp");
                 dispatcher.forward(request, response);
+            }else if (checkEmail(user)) {
+                request.setAttribute("status", "invalid_email");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/userregister.jsp");
+                dispatcher.forward(request, response);
+            } else if(!re_password.equals(password)){
+                request.setAttribute("status", "invalid_pass");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/userregister.jsp");
+                dispatcher.forward(request, response);
+            }else {
+                HttpSession session = request.getSession();
+                request.setAttribute("status", "success");
+                UserDao.registerUser(user);
+                session.setAttribute("User",username);
+                logger.info("User_Registered_successfully");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/userregister.jsp");
+                dispatcher.forward(request, response);
             }
+
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-
-        //RequestDispatcher dispatcher = request.getRequestDispatcher("/userregister.jsp");
-        //dispatcher.forward(request, response);
     }
 }

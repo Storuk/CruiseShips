@@ -17,11 +17,6 @@ import java.sql.SQLException;
 @WebServlet(name = "AddBalanceServlet", value = "/AddBalance")
 public class AddBalanceServlet extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(UserLoginServlet.class);
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/addbalance.jsp");
-        requestDispatcher.forward(request,response);
-    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

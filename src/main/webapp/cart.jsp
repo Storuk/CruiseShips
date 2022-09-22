@@ -81,12 +81,12 @@
       %>
       <ul class="navbar-nav  mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/final_project2/login"><fmt:message key="lable.singin"/></a>
+          <a class="nav-link active" aria-current="page" href="login.jsp"><fmt:message key="lable.singin"/></a>
         </li>
       </ul>
       <ul class="navbar-nav  mb-lg-0">
         <li class="nav-item-sing">
-          <a class="btn btn-outline-info" aria-current="page" href="/final_project2/register"><fmt:message key="lable.singup"/></a>
+          <a class="btn btn-outline-info" aria-current="page" href="userregister.jsp"><fmt:message key="lable.singup"/></a>
         </li>
       </ul>
       <%

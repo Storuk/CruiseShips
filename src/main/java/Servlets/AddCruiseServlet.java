@@ -32,11 +32,6 @@ public class AddCruiseServlet extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(UserLoginServlet.class);
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect("add_cruise.jsp");
-    }
-
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String price = request.getParameter("price");

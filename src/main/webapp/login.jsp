@@ -47,13 +47,12 @@
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                     <button type="submit" value="Submit" class="btn btn-primary btn-lg"><fmt:message key="lable.singin"/></button>
                   </div>
-                  <p class="text-center text-muted mt-5 mb-0"><fmt:message key="lable.donthaveaccount"/> <a href="/final_project2/register"
+                  <p class="text-center text-muted mt-5 mb-0"><a href="forgotPassword.jsp" class="fw-bold text-body"><u><fmt:message key="lable.forgotpassword"/></u></a></p>
+                  <p class="text-center text-muted mt-5 mb-0"><fmt:message key="lable.donthaveaccount"/> <a href="userregister.jsp"
                                                                                         class="fw-bold text-body"><u><fmt:message key="lable.registerhere"/></u></a></p>
-
                 </form>
               </div>
               <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-
                 <img src="images/signin-image.jpg"
                      class="img-fluid" alt="Sample image">
               </div>

@@ -18,10 +18,6 @@ import java.util.Objects;
 @WebServlet(name = "CruisesFilterServlet", value = "/CruisesFilterServlet")
 public class CruisesFilterServlet extends HttpServlet {
     CruiseDao cruiseDao = new CruiseDao();
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-    }
     private static final Logger logger = LoggerFactory.getLogger(UserLoginServlet.class);
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

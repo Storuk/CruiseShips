@@ -19,11 +19,6 @@ import static controller.security.PasswordEncrypt.hashPassword;
 @WebServlet(name = "UserServlet", value = "/register")
 public class UserRegisterServlet extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(UserLoginServlet.class);
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/userregister.jsp");
-        dispatcher.forward(request, response);
-    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
